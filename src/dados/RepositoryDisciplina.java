@@ -27,6 +27,7 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 		for (Disciplina disciplina : disciplinaDoBanco) {
 			if (disciplina.getIdDisciplina() == idDisciplina) {
 				disciplinaDoBanco.remove(disciplina);
+				break;
 			}
 		}
 	}

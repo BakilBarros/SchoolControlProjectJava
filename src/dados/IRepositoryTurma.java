@@ -6,9 +6,7 @@ import negocio.Turma;
 
 public interface IRepositoryTurma {
 	
-	public List<Turma> exibirTurmasAluno(int matricula);
-	
-	public Turma exibirTurmasDisponiveis(int idAluno);
+	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor);
 	
 	public void inserirTurma(Turma turma);
 
@@ -19,8 +17,6 @@ public interface IRepositoryTurma {
 	public List<Turma> listarTurma();
 
 	public List<Turma> listarTurmasProfessor(int idProfessor);
-
-	public Turma exibirDetalhesTurmas(int idTurma);
 
 
 }

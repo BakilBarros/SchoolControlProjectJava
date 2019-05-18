@@ -17,10 +17,6 @@ public interface IRepositoryAluno {
 	public Aluno buscarAluno(int matricula);
 
 	public List<Aluno> listarAluno();
-	
-	public List<Aluno> exibirReprovados();
-
-	public List<Aluno> exibirAprovados();
 
 	public List<Aluno> calcularFinal();
 	

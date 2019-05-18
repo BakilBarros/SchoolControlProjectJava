@@ -50,20 +50,6 @@ public class FechadaAluno implements IFechadaAluno {
 	}
 
 	@Override
-	public List<Aluno> exibirReprovados() {
-		// TODO Auto-generated method stub
-		alunoControlador.exibirReprovados();
-		return null;
-	}
-
-	@Override
-	public List<Aluno> exibirAprovados() {
-		// TODO Auto-generated method stub
-		alunoControlador.exibirAprovados();
-		return null;
-	}
-
-	@Override
 	public List<Aluno> calcularFinal() {
 		// TODO Auto-generated method stub
 		alunoControlador.calcularFinal();

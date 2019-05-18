@@ -36,6 +36,7 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 		for (Professor professor : professoresDoBanco) {
 			if (professor.getIdProfessor()==idProfessor) {
 				professoresDoBanco.remove(professor);
+				break;
 			}
 		}
 	}

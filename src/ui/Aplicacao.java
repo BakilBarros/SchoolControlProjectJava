@@ -32,6 +32,7 @@ public class Aplicacao {
 		Disciplina disc = new Disciplina(1, "Português", "Importância, contribuições e fatores relevantes do processo de construção do saberes.");
 		Disciplina disc1 = new Disciplina(2, "Matemática", "Importância, contribuições e fatores relevantes do processo de construção do saberes.");
 		Disciplina disc2 = new Disciplina(3, "Química", "Importância, contribuições e fatores relevantes do processo de construção do saberes.");
+		Disciplina disc3 = new Disciplina(4, "Química", "Importância, contribuições e fatores relevantes do processo de construção do saberes.");
 
 		Professor prof = new Professor(1, "Calos Maia", "Professor", "1", "1", new Date(13, 10, 1996));
 		Professor prof2 = new Professor(2, "João Marcelo", "Professor", "1234", "Joao2019", new Date(18, 12, 1986));
@@ -39,7 +40,7 @@ public class Aplicacao {
 		Turma Tur = new Turma(1, disc, prof2, 20);
 		Turma Tur2 = new Turma(2, disc1, prof2, 20);
 		Turma Tur3 = new Turma(3, disc, prof, 20);
-		Turma Tur4 = new Turma(4, disc1, prof2, 20);
+		Turma Tur4 = new Turma(4, disc1, prof, 20);
 		Turma Tur5 = new Turma(5, disc2, prof, 20);
 		Turma Tur6 = new Turma(6, disc, prof, 20);
 		Turma Tur7 = new Turma(7, disc1, prof, 20);
@@ -60,7 +61,6 @@ public class Aplicacao {
 		trm.inserirTurma(Tur4);
 		trm.inserirTurma(Tur5);
 		trm.inserirTurma(Tur6);
-		trm.inserirTurma(Tur7);
 
 		// Teste Disciplina
 		ds.inserirDisciplina(disc);
@@ -72,7 +72,6 @@ public class Aplicacao {
 
 		// Teste Rendimento escolar
 		rd.atribuir(renEsc);
-		rd.atribuir(renEsc2);
 		
 		// Teste professor
 		iprof.inserirProfessor(prof);
@@ -82,31 +81,42 @@ public class Aplicacao {
 //		System.out.println(trm.listarTurma());
 //		System.out.println(trm.buscarTurma(1));
 //		System.out.println(trm.listarTurmasProfessor(2));
-		//System.out.println(rd.exibirRendimentoEscolar());
-		System.out.println(rd.exibirMedias());
-
-		
-		
+//		System.out.println(rd.exibirRendimentoEscolar());
+//		System.out.println(rd.exibirMedias());
+//		System.out.println(rd.calculoPorcentagem());
+//		System.out.println(trm.exibirTurmasDisponiveisProfessor(2));
 		
 		// Teste aluno
 		alun.inserirAluno(alu);
-		alun.inserirAluno(alu2);
 
 //		 System.out.println(alun.buscarAluno(2));
 //		 System.out.println(alun.listarAluno());
 //		 System.out.println(alun.logar("2", "2"));
+//		 System.out.println(rd.listarTurmasAluno(2));
+//		 System.out.println(rd.exibirRendimentoEscolarDoAluno(2));
+//		 System.out.println(rd.listarTurmasDisponiveisAluno(2));
+		
+		//Teste Administrador
+		
+//		ds.inserirDisciplina(disc3);
+//		ds.removerDisciplina(1);
+//		System.out.println(ds.buscarDisciplina(4));
+//		System.out.println(ds.listarDisciplina());
 
+//		trm.inserirTurma(Tur7);
+//		trm.removerTurma(1);
+//		System.out.println(trm.buscarTurma(7));
+//		System.out.println(trm.listarTurma());
 		
+//		rd.atribuir(renEsc2);
+//		iprof.removerProfessor(1);
+//		System.out.println(iprof.buscarProfessor(1));
+//		System.out.println(iprof.listarProfessor());
 		
-		
-		
-		
-		
-		
-	
-		
-		
-		
+//		alun.inserirAluno(alu2);
+//		alun.removerAluno(2);
+//		System.out.println(alun.buscarAluno(2));
+//		System.out.println(alun.listarAluno());	
 		
 		
 	}

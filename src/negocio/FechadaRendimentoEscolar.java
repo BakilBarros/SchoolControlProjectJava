@@ -45,9 +45,21 @@ public class FechadaRendimentoEscolar implements IFechadaRendimentoEscolar {
 	}
 
 	@Override
-	public List<RendimentoEscolar> listarTurmasAluno(int matricula) {
+	public List<Turma> listarTurmasAluno(int matricula) {
 		// TODO Auto-generated method stub
 		return rendimentoEscolarControlador.listarTurmasAluno(matricula);
+	}
+
+	@Override
+	public List<RendimentoEscolar> exibirRendimentoEscolarDoAluno(int matricula) {
+		// TODO Auto-generated method stub
+		return rendimentoEscolarControlador.exibirRendimentoEscolarDoAluno(matricula);
+	}
+
+	@Override
+	public List<Turma> listarTurmasDisponiveisAluno(int matricula) {
+		// TODO Auto-generated method stub
+		return rendimentoEscolarControlador.listarTurmasDisponiveisAluno(matricula);
 	}
 
 }

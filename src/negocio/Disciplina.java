@@ -6,6 +6,10 @@ public class Disciplina {
 	private String nomeDisciplina;
 	private String ementaDisciplina;
 
+	public Disciplina() {
+
+	}
+
 	public Disciplina(int idDisciplina, String nomeDisciplina, String ementaDisciplina) {
 		this.idDisciplina = idDisciplina;
 		this.nomeDisciplina = nomeDisciplina;

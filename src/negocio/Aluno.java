@@ -11,6 +11,10 @@ public class Aluno {
 	private String loginAluno;
 	private String senhaAluno;
 
+	public Aluno() {
+
+	}
+
 	public Aluno(int matricula, String nomeAluno, Date dataNascimentoAluno, int periodoAluno, String loginAluno,
 			String senhaAluno) {
 		this.matricula = matricula;

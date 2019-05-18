@@ -3,6 +3,7 @@ package dados;
 import java.util.List;
 
 import negocio.RendimentoEscolar;
+import negocio.Turma;
 
 public interface IRepositoryRendimentoEscolar {
 	
@@ -16,7 +17,11 @@ public interface IRepositoryRendimentoEscolar {
 	
 	public List<RendimentoEscolar> exibirRendimentoEscolar();
 
-	public List<RendimentoEscolar> listarTurmasAluno(int matricula);
+	public List<RendimentoEscolar> exibirRendimentoEscolarDoAluno(int matricula);
+
+	public List<Turma> listarTurmasAluno(int matricula);
+
+	public List<Turma> listarTurmasDisponiveisAluno(int matricula);
 	
 	
 

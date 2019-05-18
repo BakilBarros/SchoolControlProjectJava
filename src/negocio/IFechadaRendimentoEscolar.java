@@ -14,6 +14,10 @@ public interface IFechadaRendimentoEscolar {
 	
 	public List<RendimentoEscolar> exibirRendimentoEscolar();
 	
-	public List<RendimentoEscolar> listarTurmasAluno(int matricula);
+	public List<RendimentoEscolar> exibirRendimentoEscolarDoAluno(int matricula);
+	
+	public List<Turma> listarTurmasAluno(int matricula);
+	
+	public List<Turma> listarTurmasDisponiveisAluno(int matricula);
 
 }

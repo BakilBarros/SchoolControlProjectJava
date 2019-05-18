@@ -12,6 +12,10 @@ public class RendimentoEscolar {
 	private Double[] notasDostrabalhosRendimentoEscolar = new Double[3];
 	private Double mediaAluno;
 	
+	public RendimentoEscolar() {
+		
+	}
+
 	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar, Double nota1RedimentoEscolar,
 			Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
 			Double[] notasDostrabalhosRendimentoEscolar, Double mediaAluno) {
@@ -23,6 +27,7 @@ public class RendimentoEscolar {
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
 		this.mediaAluno = 0.0;
 	}
+	
 	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar, Double nota1RedimentoEscolar,
 			Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
 			Double[] notasDostrabalhosRendimentoEscolar) {
@@ -34,6 +39,8 @@ public class RendimentoEscolar {
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
 		
 	}
+	
+	
 
 	public Turma getTurmaRedimentoEscolar() {
 		return turmaRedimentoEscolar;

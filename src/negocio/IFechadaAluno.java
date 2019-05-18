@@ -16,10 +16,6 @@ public interface IFechadaAluno {
 
 	public List<Aluno> listarAluno();
 	
-	public List<Aluno> exibirReprovados();
-
-	public List<Aluno> exibirAprovados();
-
 	public List<Aluno> calcularFinal();
 
 }

@@ -37,8 +37,8 @@ public class ProfessorControlador {
 
 	public List<Professor> listarProfessor() {
 		// TODO Auto-generated method stub
-		irepositoryProfessor.listarProfessor();
-		return null;
+		return irepositoryProfessor.listarProfessor();
+		
 	}
 
 }

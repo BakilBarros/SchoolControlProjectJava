@@ -10,6 +10,12 @@ public class Professor {
 	private String loginProfessor;
 	private String senhaProfessor;
 	private Date dataNascimentoProfessor;
+	
+	
+
+	public Professor() {
+	
+	}
 
 	public Professor(int idProfessor, String nomeProfessor, String cargoProfessor, String loginProfessor,
 			String senhaProfessor, Date dataNascimentoProfessor) {

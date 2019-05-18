@@ -16,15 +16,14 @@ public class RepositoryTurma implements IRepositoryTurma {
 	}
 
 	@Override
-	public List<Turma> exibirTurmasAluno(int matricula) {
+	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
-		return turmasDoBanco;
-	}
-
-	@Override
-	public Turma exibirTurmasDisponiveis(int idAluno) {
-		// TODO Auto-generated method stub
-		return null;
+		for (Turma turma : turmasDoBanco) {
+			if (turma.getProfessorTurma().getIdProfessor() != idProfessor) {
+				armazenaVetor.add(turma);
+			}
+		}
+		return armazenaVetor;
 	}
 
 	@Override
@@ -36,6 +35,12 @@ public class RepositoryTurma implements IRepositoryTurma {
 	@Override
 	public void removerTurma(int idTurma) {
 		// TODO Auto-generated method stub
+		for (Turma turma : turmasDoBanco) {
+			if (turma.getIdTurma()==idTurma) {
+				turmasDoBanco.remove(turma);
+				break;
+			}
+		}
 
 	}
 
@@ -56,11 +61,6 @@ public class RepositoryTurma implements IRepositoryTurma {
 		return turmasDoBanco;
 	}
 
-	@Override
-	public Turma exibirDetalhesTurmas(int idTurma) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Turma> listarTurmasProfessor(int idProfessor) {

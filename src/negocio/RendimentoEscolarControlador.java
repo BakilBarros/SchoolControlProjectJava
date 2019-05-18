@@ -48,9 +48,23 @@ public class RendimentoEscolarControlador implements IRepositoryRendimentoEscola
 
 
 	@Override
-	public List<RendimentoEscolar> listarTurmasAluno(int matricula) {
+	public List<Turma> listarTurmasAluno(int matricula) {
 		// TODO Auto-generated method stub
 		return irendimentoEscolar.listarTurmasAluno(matricula);
+	}
+
+
+	@Override
+	public List<RendimentoEscolar> exibirRendimentoEscolarDoAluno(int matricula) {
+		// TODO Auto-generated method stub
+		return irendimentoEscolar.exibirRendimentoEscolarDoAluno(matricula);
+	}
+
+
+	@Override
+	public List<Turma> listarTurmasDisponiveisAluno(int matricula) {
+		// TODO Auto-generated method stub
+		return irendimentoEscolar.listarTurmasDisponiveisAluno(matricula);
 	}
 	
 	

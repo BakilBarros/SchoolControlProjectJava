@@ -7,24 +7,15 @@ public class FechadaTurma implements IFechadaTurma {
 	private TurmaControlador turmaControlador;
 
 	public FechadaTurma() {
-		 turmaControlador = new TurmaControlador();
+		turmaControlador = new TurmaControlador();
 	}
 
 	@Override
-	public List<Turma> exibirTurmasAluno(int matricula) {
+	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
-		turmaControlador.exibirTurmasAluno(matricula);
-		return null;
-		
-	}
+		return turmaControlador.exibirTurmasDisponiveisProfessor(idProfessor);
 
-	@Override
-	public Turma exibirTurmasDisponiveis(int idAluno) {
-		// TODO Auto-generated method stub
-		turmaControlador.exibirTurmasDisponiveis(idAluno);
-		return null;
 	}
-
 
 	@Override
 	public void inserirTurma(Turma turma) {
@@ -50,20 +41,10 @@ public class FechadaTurma implements IFechadaTurma {
 		return turmaControlador.listarTurma();
 	}
 
-
-	@Override
-	public Turma exibirDetalhesTurmas(int idTurma) {
-		// TODO Auto-generated method stub
-		turmaControlador.exibirDetalhesTurmas(idTurma);
-		return null;
-	}
-
 	@Override
 	public List<Turma> listarTurmasProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		return turmaControlador.listarTurmasProfessor(idProfessor);
 	}
-
-
 
 }

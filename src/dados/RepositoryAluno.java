@@ -11,7 +11,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 
 	public RepositoryAluno() {
 		alunosDoBanco = new ArrayList<>();
-		
+
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 	@Override
 	public void inserirAluno(Aluno aluno) {
 		// TODO Auto-generated method stub
-			alunosDoBanco.add(aluno);
+		alunosDoBanco.add(aluno);
 	}
 
 	@Override
@@ -48,7 +48,8 @@ public class RepositoryAluno implements IRepositoryAluno {
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
 			if (aluno.getMatricula() == matricula) {
-
+				alunosDoBanco.remove(aluno);
+				break;
 			}
 		}
 
@@ -69,18 +70,6 @@ public class RepositoryAluno implements IRepositoryAluno {
 	public List<Aluno> listarAluno() {
 		// TODO Auto-generated method stub
 		return alunosDoBanco;
-	}
-
-	@Override
-	public List<Aluno> exibirReprovados() {
-		return alunosDoBanco;
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public List<Aluno> exibirAprovados() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

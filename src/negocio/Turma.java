@@ -6,11 +6,20 @@ public class Turma {
 	private Disciplina disciplinaTurma;
 	private Professor professorTurma;
 	private int capacidadeTurma;
+	
+	public Turma() {
+		
+	}
 
 	public Turma(int idTurma, Disciplina disciplinaTurma, Professor professorTurma, int capacidadeTurma) {
 		this.idTurma = idTurma;
 		this.disciplinaTurma = disciplinaTurma;
 		this.professorTurma = professorTurma;
+		this.capacidadeTurma = capacidadeTurma;
+	}
+	
+	public Turma(int idTurma, int capacidadeTurma) {
+		this.idTurma = idTurma;
 		this.capacidadeTurma = capacidadeTurma;
 	}
 

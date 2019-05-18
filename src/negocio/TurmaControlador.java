@@ -8,22 +8,15 @@ import dados.RepositoryTurma;
 public class TurmaControlador implements IRepositoryTurma {
 
 	private IRepositoryTurma irepositoryTurma;
-	
 
 	public TurmaControlador() {
 		irepositoryTurma = new RepositoryTurma();
 	}
 
-	public List<Turma> exibirTurmasAluno(int matricula) {
+	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
-		irepositoryTurma.exibirTurmasAluno(matricula);
-		return null;
-	}
+		return irepositoryTurma.exibirTurmasDisponiveisProfessor(idProfessor);
 
-	public Turma exibirTurmasDisponiveis(int idAluno) {
-		// TODO Auto-generated method stub
-		irepositoryTurma.exibirTurmasDisponiveis(idAluno);
-		return null;
 	}
 
 	public void inserirTurma(Turma turma) {
@@ -42,15 +35,8 @@ public class TurmaControlador implements IRepositoryTurma {
 	}
 
 	public List<Turma> listarTurma() {
-		// TODO Auto-generated method stu 	
+		// TODO Auto-generated method stu
 		return irepositoryTurma.listarTurma();
-	}
-
-
-	public Turma exibirDetalhesTurmas(int idTurma) {
-		// TODO Auto-generated method stub
-		irepositoryTurma.exibirDetalhesTurmas(idTurma);
-		return null;
 	}
 
 	@Override

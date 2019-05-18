@@ -4,29 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import negocio.RendimentoEscolar;
+import negocio.Turma;
 
 public class RepositoryRendimentoEscolar implements IRepositoryRendimentoEscolar {
 
 	private List<RendimentoEscolar> rendimentoEscolarDoBanco;
+	private List<RendimentoEscolar> armazenaVetorRendimentoEscolar;
+	private List<Turma> armazenaVetor;
+	
 
 	public RepositoryRendimentoEscolar() {
 		rendimentoEscolarDoBanco = new ArrayList<>();
+		armazenaVetor = new ArrayList<>();
+		armazenaVetorRendimentoEscolar = new ArrayList<>();
+		
 	}
 
 	@Override
 	public String calculoPorcentagem() {
 		// TODO Auto-generated method stub
-		int contador = 0;
+		int contadorReprovado = 0, contadorAprovado = 0, contadorfinal = 0, somaAluno = 0;
 		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
 			if (rendimentoEscolar.getMediaAluno()>7.0) {
-				contador++;
-			} else if(rendimentoEscolar.getMediaAluno()>7.0) {
-
+				contadorAprovado++;
+			} else if(rendimentoEscolar.getMediaAluno()<7.0 && rendimentoEscolar.getMediaAluno()>3.0) {
+				contadorfinal++;
 			}else{
-				
+				contadorReprovado++;
 			}
 		}
-		return null;
+		somaAluno = contadorAprovado + contadorReprovado + contadorfinal;
+		
+		return "Aprovados: "+(contadorAprovado*100)/somaAluno+"% Reprovados: "+(contadorReprovado*100)/somaAluno+"%  Final "+(contadorfinal*100)/somaAluno+ "% ";
 	}
 
 	@Override
@@ -62,10 +71,36 @@ public class RepositoryRendimentoEscolar implements IRepositoryRendimentoEscolar
 	}
 
 	@Override
-	public List<RendimentoEscolar> listarTurmasAluno(int matricula) {
+	public List<Turma> listarTurmasAluno(int matricula) {
 		// TODO Auto-generated method stub
-		return null;
+		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
+			if (rendimentoEscolar.getAlunoRedimentoEscolar().getMatricula()==matricula) {
+				armazenaVetor.add(rendimentoEscolar.getTurmaRedimentoEscolar());
+			}
+		}
+		return armazenaVetor;
 
+	}
+
+	@Override
+	public List<RendimentoEscolar> exibirRendimentoEscolarDoAluno(int matricula) {
+		// TODO Auto-generated method stub
+		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
+			if (rendimentoEscolar.getAlunoRedimentoEscolar().getMatricula()==matricula) {
+				armazenaVetorRendimentoEscolar.add(rendimentoEscolar);
+			}
+		}
+		return armazenaVetorRendimentoEscolar;
+	}
+
+	@Override
+	public List<Turma> listarTurmasDisponiveisAluno(int matricula) {
+		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
+			if (rendimentoEscolar.getAlunoRedimentoEscolar().getMatricula() != matricula) {
+				armazenaVetor.add(rendimentoEscolar.getTurmaRedimentoEscolar());
+			}
+		}
+		return armazenaVetor;
 	}
 
 }
