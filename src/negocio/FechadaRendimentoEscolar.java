@@ -11,10 +11,10 @@ public class FechadaRendimentoEscolar implements IFechadaRendimentoEscolar {
 	}
 
 	@Override
-	public RendimentoEscolar visualizarTrabalhos(int idAluno) {
+	public String calculoPorcentagem() {
 		// TODO Auto-generated method stub
-		rendimentoEscolarControlador.visualizarTrabalhos(idAluno);
-		return null;
+		return rendimentoEscolarControlador.calculoPorcentagem();
+		
 	}
 
 	@Override
@@ -24,24 +24,24 @@ public class FechadaRendimentoEscolar implements IFechadaRendimentoEscolar {
 	}
 
 	@Override
-	public RendimentoEscolar visualizarTrabalhosEntregues() {
+	public RendimentoEscolar exibirMediaComBonus() {
 		// TODO Auto-generated method stub
-		rendimentoEscolarControlador.visualizarTrabalhosEntregues();
-		return null;
+		return rendimentoEscolarControlador.exibirMediaComBonus();
+		 
 	}
 
 	@Override
-	public Double exibirMedias() {
+	public List<RendimentoEscolar> exibirMedias() {
 		// TODO Auto-generated method stub
 		return rendimentoEscolarControlador.exibirMedias();
 		
 	}
 
 	@Override
-	public List<RendimentoEscolar> exibirMediasComBonus() {
+	public List<RendimentoEscolar> exibirRendimentoEscolar() {
 		// TODO Auto-generated method stub
-		rendimentoEscolarControlador.exibirMediasComBonus();
-		return null;
+		return rendimentoEscolarControlador.exibirRendimentoEscolar();
+		 
 	}
 
 	@Override

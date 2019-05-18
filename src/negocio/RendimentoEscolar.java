@@ -10,16 +10,29 @@ public class RendimentoEscolar {
 	private Double nota2RedimentoEscolar;
 	private String[] trabalhosRendimentoEscolar = new String[3];
 	private Double[] notasDostrabalhosRendimentoEscolar = new Double[3];
-
+	private Double mediaAluno;
+	
+	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar, Double nota1RedimentoEscolar,
+			Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
+			Double[] notasDostrabalhosRendimentoEscolar, Double mediaAluno) {
+		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
+		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
+		this.nota1RedimentoEscolar = nota1RedimentoEscolar;
+		this.nota2RedimentoEscolar = nota2RedimentoEscolar;
+		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
+		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
+		this.mediaAluno = 0.0;
+	}
 	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar, Double nota1RedimentoEscolar,
 			Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
 			Double[] notasDostrabalhosRendimentoEscolar) {
 		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
 		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
-		this.nota1RedimentoEscolar = 0.0;
-		this.nota2RedimentoEscolar = 0.0;
+		this.nota1RedimentoEscolar = nota1RedimentoEscolar;
+		this.nota2RedimentoEscolar = nota2RedimentoEscolar;
 		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
+		
 	}
 
 	public Turma getTurmaRedimentoEscolar() {
@@ -70,13 +83,29 @@ public class RendimentoEscolar {
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
 	}
 
+	public Double getMediaAluno() {
+		Double v0, v1;
+		v0 = (notasDostrabalhosRendimentoEscolar[0]+notasDostrabalhosRendimentoEscolar[1])/2;
+		v1 = (notasDostrabalhosRendimentoEscolar[2]+notasDostrabalhosRendimentoEscolar[3])/2;
+		v0 = (v0*10)/100;
+		v1 = (v1*10)/100;
+		mediaAluno = ((this.nota1RedimentoEscolar+v0)+(this.nota2RedimentoEscolar+v1))/2;
+		return mediaAluno;
+	}
+
+	public void setMediaAluno(Double mediaAluno) {
+		this.mediaAluno = mediaAluno;
+	}
+
 	@Override
 	public String toString() {
 		return "RendimentoEscolar [turmaRedimentoEscolar=" + turmaRedimentoEscolar + ", alunoRedimentoEscolar="
 				+ alunoRedimentoEscolar + ", nota1RedimentoEscolar=" + nota1RedimentoEscolar
 				+ ", nota2RedimentoEscolar=" + nota2RedimentoEscolar + ", trabalhosRendimentoEscolar="
 				+ Arrays.toString(trabalhosRendimentoEscolar) + ", notasDostrabalhosRendimentoEscolar="
-				+ Arrays.toString(notasDostrabalhosRendimentoEscolar) + "]";
+				+ Arrays.toString(notasDostrabalhosRendimentoEscolar) + ", mediaAluno=" + mediaAluno + "]\n";
 	}
-
+	
+	
+	
 }

@@ -14,10 +14,10 @@ public class RendimentoEscolarControlador implements IRepositoryRendimentoEscola
 	}
 
 
-	public RendimentoEscolar visualizarTrabalhos(int idAluno) {
+	public String calculoPorcentagem () {
 		// TODO Auto-generated method stub
-		irendimentoEscolar.visualizarTrabalhos(idAluno);
-		return null;
+		return irendimentoEscolar.calculoPorcentagem();
+		
 	}
 
 	
@@ -27,24 +27,23 @@ public class RendimentoEscolarControlador implements IRepositoryRendimentoEscola
 	}
 
 	
-	public RendimentoEscolar visualizarTrabalhosEntregues() {
+	public RendimentoEscolar exibirMediaComBonus() {
 		// TODO Auto-generated method stub
-		irendimentoEscolar.visualizarTrabalhosEntregues();
-		return null;
+		return irendimentoEscolar.exibirMediaComBonus();
+		 
 	}
 
-	
-	public Double exibirMedias() {
+	public List<RendimentoEscolar> exibirMedias() {
 		// TODO Auto-generated method stub
 		return irendimentoEscolar.exibirMedias();
 	
 	}
 
 	
-	public List<RendimentoEscolar> exibirMediasComBonus() {
+	public List<RendimentoEscolar> exibirRendimentoEscolar() {
 		// TODO Auto-generated method stub
-		irendimentoEscolar.exibirMediasComBonus();
-		return null;
+		return irendimentoEscolar.exibirRendimentoEscolar();
+		 
 	}
 
 

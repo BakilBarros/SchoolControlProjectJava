@@ -14,8 +14,18 @@ public class RepositoryRendimentoEscolar implements IRepositoryRendimentoEscolar
 	}
 
 	@Override
-	public RendimentoEscolar visualizarTrabalhos(int idAluno) {
+	public String calculoPorcentagem() {
 		// TODO Auto-generated method stub
+		int contador = 0;
+		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
+			if (rendimentoEscolar.getMediaAluno()>7.0) {
+				contador++;
+			} else if(rendimentoEscolar.getMediaAluno()>7.0) {
+
+			}else{
+				
+			}
+		}
 		return null;
 	}
 
@@ -24,33 +34,29 @@ public class RepositoryRendimentoEscolar implements IRepositoryRendimentoEscolar
 		// TODO Auto-generated method stub
 		rendimentoEscolarDoBanco.add(rendimentoEscolar);
 	}
-	public RendimentoEscolar teste() {
+
+	@Override
+	public RendimentoEscolar exibirMediaComBonus() {
 		// TODO Auto-generated method stub
 		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
-			return rendimentoEscolar;
+			rendimentoEscolar.getMediaAluno();
 		}
+
 		return null;
 	}
 
 	@Override
-	public RendimentoEscolar visualizarTrabalhosEntregues() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Double exibirMedias() {
-		// TODO Auto-generated method stub
-		Double media;
+	public List<RendimentoEscolar> exibirMedias() {
 		for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
-			media = (rendimentoEscolar.getNota1RedimentoEscolar() + rendimentoEscolar.getNota2RedimentoEscolar())/2;
-			return media;
+			rendimentoEscolar.getMediaAluno();
 		}
-		return null;
+
+		return rendimentoEscolarDoBanco;
+
 	}
 
 	@Override
-	public List<RendimentoEscolar> exibirMediasComBonus() {
+	public List<RendimentoEscolar> exibirRendimentoEscolar() {
 		// TODO Auto-generated method stub
 		return rendimentoEscolarDoBanco;
 	}
@@ -59,7 +65,7 @@ public class RepositoryRendimentoEscolar implements IRepositoryRendimentoEscolar
 	public List<RendimentoEscolar> listarTurmasAluno(int matricula) {
 		// TODO Auto-generated method stub
 		return null;
-		
+
 	}
 
 }

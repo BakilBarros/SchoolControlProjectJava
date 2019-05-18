@@ -41,8 +41,7 @@ public class FechadaTurma implements IFechadaTurma {
 	@Override
 	public Turma buscarTurma(int idTurma) {
 		// TODO Auto-generated method stub
-		turmaControlador.buscarTurma(idTurma);
-		return null;
+		return turmaControlador.buscarTurma(idTurma);
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class FechadaTurma implements IFechadaTurma {
 	}
 
 	@Override
-	public int listarTurmasProfessor(int idProfessor) {
+	public List<Turma> listarTurmasProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		return turmaControlador.listarTurmasProfessor(idProfessor);
 	}

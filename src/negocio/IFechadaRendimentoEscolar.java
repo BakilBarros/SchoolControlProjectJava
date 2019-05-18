@@ -4,15 +4,15 @@ import java.util.List;
 
 public interface IFechadaRendimentoEscolar {
 	
-	public RendimentoEscolar visualizarTrabalhos(int idAluno);
+	public String calculoPorcentagem ();
 	
 	public void atribuir(RendimentoEscolar rendimentoEscolar);
 
-	public RendimentoEscolar visualizarTrabalhosEntregues();
+	public RendimentoEscolar exibirMediaComBonus();
 
-	public Double exibirMedias();
+	public List<RendimentoEscolar> exibirMedias();
 	
-	public List<RendimentoEscolar> exibirMediasComBonus();
+	public List<RendimentoEscolar> exibirRendimentoEscolar();
 	
 	public List<RendimentoEscolar> listarTurmasAluno(int matricula);
 

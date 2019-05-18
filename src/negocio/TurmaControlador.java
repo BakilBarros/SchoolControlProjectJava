@@ -38,8 +38,7 @@ public class TurmaControlador implements IRepositoryTurma {
 
 	public Turma buscarTurma(int idTurma) {
 		// TODO Auto-generated method stub
-		irepositoryTurma.buscarTurma(idTurma);
-		return null;
+		return irepositoryTurma.buscarTurma(idTurma);
 	}
 
 	public List<Turma> listarTurma() {
@@ -55,7 +54,7 @@ public class TurmaControlador implements IRepositoryTurma {
 	}
 
 	@Override
-	public int listarTurmasProfessor(int idProfessor) {
+	public List<Turma> listarTurmasProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		return irepositoryTurma.listarTurmasProfessor(idProfessor);
 	}

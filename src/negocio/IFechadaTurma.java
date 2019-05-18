@@ -16,7 +16,7 @@ public interface IFechadaTurma {
 
 	public List<Turma> listarTurma();
 	
-	public int listarTurmasProfessor(int idProfessor);
+	public List<Turma> listarTurmasProfessor(int idProfessor);
 
 	public Turma exibirDetalhesTurmas(int idTurma);
 	

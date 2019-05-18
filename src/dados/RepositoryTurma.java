@@ -8,9 +8,11 @@ import negocio.Turma;
 public class RepositoryTurma implements IRepositoryTurma {
 
 	private List<Turma> turmasDoBanco;
+	private List<Turma> armazenaVetor;
 
 	public RepositoryTurma() {
 		turmasDoBanco = new ArrayList<>();
+		armazenaVetor = new ArrayList<>();
 	}
 
 	@Override
@@ -40,6 +42,11 @@ public class RepositoryTurma implements IRepositoryTurma {
 	@Override
 	public Turma buscarTurma(int idTurma) {
 		// TODO Auto-generated method stub
+		for (Turma turma : turmasDoBanco) {
+			if (turma.getIdTurma() == idTurma) {
+				return turma;
+			}
+		}
 		return null;
 	}
 
@@ -56,12 +63,13 @@ public class RepositoryTurma implements IRepositoryTurma {
 	}
 
 	@Override
-	public int listarTurmasProfessor(int idProfessor) {
+	public List<Turma> listarTurmasProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		for (Turma turma : turmasDoBanco) {
-			return turmasDoBanco.indexOf(turma.getIdTurma());
-			
+			if (turma.getProfessorTurma().getIdProfessor() == idProfessor) {
+				armazenaVetor.add(turma);
+			}
 		}
-		return 0;
+		return armazenaVetor;
 	}
 }
