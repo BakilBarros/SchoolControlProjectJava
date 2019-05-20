@@ -18,19 +18,19 @@ public class FechadaTurma implements IFechadaTurma {
 	}
 
 	@Override
-	public void inserirTurma(Turma turma) {
+	public void inserirTurma(Turma turma) throws ExceptionElementoExiste {
 		// TODO Auto-generated method stub
 		turmaControlador.inserirTurma(turma);
 	}
 
 	@Override
-	public void removerTurma(int idTurma) {
+	public void removerTurma(int idTurma) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		turmaControlador.removerTurma(idTurma);
 	}
 
 	@Override
-	public Turma buscarTurma(int idTurma) {
+	public Turma buscarTurma(int idTurma) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		return turmaControlador.buscarTurma(idTurma);
 	}

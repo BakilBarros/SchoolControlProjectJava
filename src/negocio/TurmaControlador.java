@@ -5,7 +5,7 @@ import java.util.List;
 import dados.IRepositoryTurma;
 import dados.RepositoryTurma;
 
-public class TurmaControlador implements IRepositoryTurma {
+public class TurmaControlador{
 
 	private IRepositoryTurma irepositoryTurma;
 
@@ -19,17 +19,17 @@ public class TurmaControlador implements IRepositoryTurma {
 
 	}
 
-	public void inserirTurma(Turma turma) {
+	public void inserirTurma(Turma turma) throws ExceptionElementoExiste {
 		// TODO Auto-generated method stub
 		irepositoryTurma.inserirTurma(turma);
 	}
 
-	public void removerTurma(int idTurma) {
+	public void removerTurma(int idTurma) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		irepositoryTurma.removerTurma(idTurma);
 	}
 
-	public Turma buscarTurma(int idTurma) {
+	public Turma buscarTurma(int idTurma) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		return irepositoryTurma.buscarTurma(idTurma);
 	}
@@ -39,7 +39,6 @@ public class TurmaControlador implements IRepositoryTurma {
 		return irepositoryTurma.listarTurma();
 	}
 
-	@Override
 	public List<Turma> listarTurmasProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		return irepositoryTurma.listarTurmasProfessor(idProfessor);

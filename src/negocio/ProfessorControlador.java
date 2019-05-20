@@ -13,23 +13,23 @@ public class ProfessorControlador {
 		irepositoryProfessor = new RepositoryProfessor();
 	}
 
-	public Professor logar(String login, String senha) {
+	public Professor logar(String login, String senha) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		return irepositoryProfessor.logar(login, senha);
 
 	}
 
-	public void inserirProfessor(Professor professor) {
+	public void inserirProfessor(Professor professor) throws ExceptionElementoExiste{
 		// TODO Auto-generated method stub
 		irepositoryProfessor.inserirProfessor(professor);
 	}
 
-	public void removerProfessor(int idProfessor) {
+	public void removerProfessor(int idProfessor) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		irepositoryProfessor.removerProfessor(idProfessor);
 	}
 
-	public Professor buscarProfessor(int idProfessor) {
+	public Professor buscarProfessor(int idProfessor) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		return irepositoryProfessor.buscarProfessor(idProfessor);
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import negocio.Aluno;
+import negocio.ExceptionElementoExiste;
+import negocio.ExceptionElementoInvalido;
 
 public class RepositoryAluno implements IRepositoryAluno {
 
@@ -15,36 +17,39 @@ public class RepositoryAluno implements IRepositoryAluno {
 	}
 
 	@Override
-	public Aluno logar(String login, String senha) {
+	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
 			if (aluno.getLoginAluno().equals(login) && aluno.getSenhaAluno().equals(senha)) {
 				return aluno;
 			}
-
 		}
-		return null;
+		throw new ExceptionElementoInvalido("Login Inválido");
 	}
 
 	@Override
-	public void inserirAluno(Aluno aluno) {
+	public void inserirAluno(Aluno aluno) throws ExceptionElementoExiste {
 		// TODO Auto-generated method stub
-		alunosDoBanco.add(aluno);
+		if (!verificarExistenciaElemento(aluno.getMatricula())) {
+			alunosDoBanco.add(aluno);
+		} else {
+			throw new ExceptionElementoExiste("Aluno jÃ¡ cadastrado");
+		}
 	}
 
 	@Override
-	public Aluno exibirAluno(int idAluno) {
+	public Aluno exibirAluno(int matricula) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
-			if (aluno.getMatricula() == idAluno) {
+			if (aluno.getMatricula() == matricula) {
 				return aluno;
 			}
 		}
-		return null;
+		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
 	}
 
 	@Override
-	public void removerAluno(int matricula) {
+	public void removerAluno(int matricula) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
 			if (aluno.getMatricula() == matricula) {
@@ -52,18 +57,19 @@ public class RepositoryAluno implements IRepositoryAluno {
 				break;
 			}
 		}
-
+		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
 	}
 
 	@Override
-	public Aluno buscarAluno(int matricula) {
+	public Aluno buscarAluno(int matricula) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
 			if (aluno.getMatricula() == matricula) {
 				return aluno;
 			}
 		}
-		return null;
+		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+
 	}
 
 	@Override
@@ -73,9 +79,14 @@ public class RepositoryAluno implements IRepositoryAluno {
 	}
 
 	@Override
-	public List<Aluno> calcularFinal() {
+	public boolean verificarExistenciaElemento(int matricula) {
 		// TODO Auto-generated method stub
-		return null;
+		for (Aluno aluno : alunosDoBanco) {
+			if (aluno.getMatricula() == matricula) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

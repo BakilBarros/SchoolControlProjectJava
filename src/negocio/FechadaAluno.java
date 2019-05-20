@@ -11,49 +11,41 @@ public class FechadaAluno implements IFechadaAluno {
 	}
 
 	@Override
-	public Aluno logar(String login, String senha) {
+	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		return alunoControlador.logar(login, senha);
 	}
 
 	@Override
-	public void inserirAluno(Aluno aluno) {
+	public void inserirAluno(Aluno aluno) throws ExceptionElementoExiste{
 		// TODO Auto-generated method stub
 		alunoControlador.inserirAluno(aluno);
 	}
 
 	@Override
-	public Aluno exibirAluno(int matricula) {
+	public Aluno exibirAluno(int matricula) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		alunoControlador.exibirAluno(matricula);
 		return null;
 	}
 
 	@Override
-	public void removerAluno(int idTurma) {
+	public void removerAluno(int idTurma) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		alunoControlador.removerAluno(idTurma);
 
 	}
 
 	@Override
-	public Aluno buscarAluno(int matricula) {
+	public Aluno buscarAluno(int matricula) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
-		alunoControlador.buscarAluno(matricula);
 		return alunoControlador.buscarAluno(matricula);
 	}
 
 	@Override
-	public List<Aluno> listarAluno() {
+	public List<Aluno> listarAluno() { 
 		// TODO Auto-generated method stub
 		return alunoControlador.listarAluno();
-	}
-
-	@Override
-	public List<Aluno> calcularFinal() {
-		// TODO Auto-generated method stub
-		alunoControlador.calcularFinal();
-		return null;
 	}
 
 }

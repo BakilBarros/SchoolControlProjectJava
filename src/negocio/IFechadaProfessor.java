@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface IFechadaProfessor {
 	
-	public Professor logar(String login, String senha);
+	public Professor logar(String login, String senha) throws ExceptionElementoInvalido;
 
-	public void inserirProfessor(Professor professor);
-	
-	public void removerProfessor(int idProfessor);
+	public void inserirProfessor(Professor professor) throws ExceptionElementoExiste;
 
-	public Professor buscarProfessor(int idProfessor);
+	public void removerProfessor(int idProfessor) throws ExceptionElementoInvalido;
+
+	public Professor buscarProfessor(int idProfessor) throws ExceptionElementoInvalido;
 
 	public List<Professor> listarProfessor();
 

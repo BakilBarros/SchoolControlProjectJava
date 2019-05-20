@@ -11,19 +11,19 @@ public class FechadaDisciplina implements IFechadaDisciplina {
 	}
 
 	@Override
-	public void inserirDisciplina(Disciplina disciplina) {
+	public void inserirDisciplina(Disciplina disciplina) throws ExceptionElementoExiste{
 		// TODO Auto-generated method stub
 		disciplinaControlador.inserirDisciplina(disciplina);
 	}
 
 	@Override
-	public void removerDisciplina(int idDisciplina) {
+	public void removerDisciplina(int idDisciplina) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		disciplinaControlador.removerDisciplina(idDisciplina);
 	}
 
 	@Override
-	public Disciplina buscarDisciplina(int idDisciplina) {
+	public Disciplina buscarDisciplina(int idDisciplina) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		return disciplinaControlador.buscarDisciplina(idDisciplina);
 	}

@@ -11,26 +11,26 @@ public class FechadaProfessor implements IFechadaProfessor {
 	}
 
 	@Override
-	public Professor logar(String login, String senha) {
+	public Professor logar(String login, String senha) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		return professorControlador.logar(login, senha);
 	
 	}
 
 	@Override
-	public void inserirProfessor(Professor professor) {
+	public void inserirProfessor(Professor professor) throws ExceptionElementoExiste{
 		// TODO Auto-generated method stub
 		professorControlador.inserirProfessor(professor);
 	}
 
 	@Override
-	public void removerProfessor(int idProfessor) {
+	public void removerProfessor(int idProfessor) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		professorControlador.removerProfessor(idProfessor);
 	}
 
 	@Override
-	public Professor buscarProfessor(int idProfessor) {
+	public Professor buscarProfessor(int idProfessor) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 	return	professorControlador.buscarProfessor(idProfessor);
 	

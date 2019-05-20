@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import negocio.Disciplina;
+import negocio.ExceptionElementoExiste;
+import negocio.ExceptionElementoInvalido;
 
 public class RepositoryDisciplina implements IRepositoryDisciplina {
 
@@ -15,14 +17,17 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 	}
 
 	@Override
-	public void inserirDisciplina(Disciplina disciplina) {
+	public void inserirDisciplina(Disciplina disciplina) throws ExceptionElementoExiste {
 		// TODO Auto-generated method stub
-		disciplinaDoBanco.add(disciplina);
-
+		if (!verificarExistenciaElemento(disciplina.getIdDisciplina())) {
+			disciplinaDoBanco.add(disciplina);
+		} else {
+			throw new ExceptionElementoExiste("Disciplina j√° cadastrado");
+		}
 	}
 
 	@Override
-	public void removerDisciplina(int idDisciplina) {
+	public void removerDisciplina(int idDisciplina) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		for (Disciplina disciplina : disciplinaDoBanco) {
 			if (disciplina.getIdDisciplina() == idDisciplina) {
@@ -30,23 +35,35 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 				break;
 			}
 		}
+		throw new ExceptionElementoInvalido("Identificador Inv·lido");
 	}
 
 	@Override
-	public Disciplina buscarDisciplina(int idDisciplina) {
+	public Disciplina buscarDisciplina(int idDisciplina) throws ExceptionElementoInvalido{
 		// TODO Auto-generated method stub
 		for (Disciplina disciplina : disciplinaDoBanco) {
 			if (disciplina.getIdDisciplina() == idDisciplina) {
 				return disciplina;
 			}
 		}
-		return null;
+		throw new ExceptionElementoInvalido("Identificador Inv·lido");
 	}
 
 	@Override
 	public List<Disciplina> listarDisciplina() {
 		// TODO Auto-generated method stub
 		return disciplinaDoBanco;
+	}
+
+	@Override
+	public boolean verificarExistenciaElemento(int idDisciplina) {
+		// TODO Auto-generated method stub
+		for (Disciplina disciplina : disciplinaDoBanco) {
+			if (disciplina.getIdDisciplina() == idDisciplina) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

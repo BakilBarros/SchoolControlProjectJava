@@ -3,6 +3,8 @@ package dados;
 import java.util.ArrayList;
 import java.util.List;
 
+import negocio.ExceptionElementoExiste;
+import negocio.ExceptionElementoInvalido;
 import negocio.Turma;
 
 public class RepositoryTurma implements IRepositoryTurma {
@@ -27,32 +29,37 @@ public class RepositoryTurma implements IRepositoryTurma {
 	}
 
 	@Override
-	public void inserirTurma(Turma turma) {
+	public void inserirTurma(Turma turma) throws ExceptionElementoExiste {
 		// TODO Auto-generated method stub
-		turmasDoBanco.add(turma);
+		if (!verificarExistenciaElemento(turma.getIdTurma())) {
+			turmasDoBanco.add(turma);
+		} else {
+			throw new ExceptionElementoExiste("Turma jÃ¡ cadastrado");
+		}
 	}
 
 	@Override
-	public void removerTurma(int idTurma) {
+	public void removerTurma(int idTurma) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		for (Turma turma : turmasDoBanco) {
-			if (turma.getIdTurma()==idTurma) {
+			if (turma.getIdTurma() == idTurma) {
 				turmasDoBanco.remove(turma);
 				break;
 			}
 		}
+		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
 
 	}
 
 	@Override
-	public Turma buscarTurma(int idTurma) {
+	public Turma buscarTurma(int idTurma) throws ExceptionElementoInvalido {
 		// TODO Auto-generated method stub
 		for (Turma turma : turmasDoBanco) {
 			if (turma.getIdTurma() == idTurma) {
 				return turma;
 			}
 		}
-		return null;
+		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
 	}
 
 	@Override
@@ -60,7 +67,6 @@ public class RepositoryTurma implements IRepositoryTurma {
 		// TODO Auto-generated method stub
 		return turmasDoBanco;
 	}
-
 
 	@Override
 	public List<Turma> listarTurmasProfessor(int idProfessor) {
@@ -71,5 +77,16 @@ public class RepositoryTurma implements IRepositoryTurma {
 			}
 		}
 		return armazenaVetor;
+	}
+
+	@Override
+	public boolean verificarExistenciaElemento(int idTurma) {
+		// TODO Auto-generated method stub
+		for (Turma turma : turmasDoBanco) {
+			if (turma.getIdTurma() == idTurma) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

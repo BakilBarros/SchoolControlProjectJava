@@ -6,11 +6,11 @@ public interface IFechadaTurma {
 	
 	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor);
 	
-	public void inserirTurma(Turma turma);
+	public void inserirTurma(Turma turma) throws ExceptionElementoExiste;
 
-	public void removerTurma(int idTurma);
+	public void removerTurma(int idTurma) throws ExceptionElementoInvalido;
 
-	public Turma buscarTurma(int idTurma);
+	public Turma buscarTurma(int idTurma) throws ExceptionElementoInvalido;
 
 	public List<Turma> listarTurma();
 
