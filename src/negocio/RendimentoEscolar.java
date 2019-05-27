@@ -106,11 +106,11 @@ public class RendimentoEscolar {
 
 	@Override
 	public String toString() {
-		return "RendimentoEscolar [turmaRedimentoEscolar=" + turmaRedimentoEscolar + ", alunoRedimentoEscolar="
-				+ alunoRedimentoEscolar + ", nota1RedimentoEscolar=" + nota1RedimentoEscolar
-				+ ", nota2RedimentoEscolar=" + nota2RedimentoEscolar + ", trabalhosRendimentoEscolar="
-				+ Arrays.toString(trabalhosRendimentoEscolar) + ", notasDostrabalhosRendimentoEscolar="
-				+ Arrays.toString(notasDostrabalhosRendimentoEscolar) + ", mediaAluno=" + mediaAluno + "]\n";
+		return "RendimentoEscolar [turmaRedimentoEscolar: " + turmaRedimentoEscolar + ", alunoRedimentoEscolar: "
+				+ alunoRedimentoEscolar + ", nota1RedimentoEscolar: " + nota1RedimentoEscolar
+				+ ", nota2RedimentoEscolar: " + nota2RedimentoEscolar + ", trabalhosRendimentoEscolar: "
+				+ Arrays.toString(trabalhosRendimentoEscolar) + ", notasDostrabalhosRendimentoEscolar:"
+				+ Arrays.toString(notasDostrabalhosRendimentoEscolar) + ", mediaAluno: " + mediaAluno + "]\r\n";
 	}
 	
 	

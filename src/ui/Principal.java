@@ -6,7 +6,15 @@
 package ui;
 
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import negocio.Aluno;
+import negocio.Disciplina;
 import negocio.ExceptionElementoExiste;
 import negocio.ExceptionElementoInvalido;
 import negocio.FechadaAluno;
@@ -20,6 +28,7 @@ import negocio.IFechadaProfessor;
 import negocio.IFechadaRendimentoEscolar;
 import negocio.IFechadaTurma;
 import negocio.Professor;
+import negocio.Turma;
 
 /**
  *
@@ -32,13 +41,27 @@ public class Principal extends javax.swing.JFrame {
 	private static IFechadaDisciplina ds = new FechadaDisciplina();
 	private static IFechadaRendimentoEscolar rd = new FechadaRendimentoEscolar();
 	private static IFechadaProfessor iprof = new FechadaProfessor();
+    private Object RS;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+//            btnAdministrador.setEnabled(false);
+//            btnCadAluno.setEnabled(true);
+//            btnCadProfessor.setEnabled(true);
+//            btnTrabalhos.setEnabled(false);
+//            btnTurmasDisponiveis.setEnabled(false);
+       
     }
+    
+//    public void addRow(List<Disciplina> isArray)
+//    {
+//        this.ds.listarDisciplina().addAll(isArray);
+//        this.tabelaDisciplina
+//        this.fireTableDataChanged();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,17 +144,27 @@ public class Principal extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         dialogoAdministrador = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        idTurma = new javax.swing.JTextField();
+        capacidade = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        idDisciplina = new javax.swing.JTextField();
+        nomeDisciplina = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        ementaDisciplina = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        statusDisciplina = new javax.swing.JLabel();
+        statusTurma = new javax.swing.JLabel();
+        listaDisciplina = new javax.swing.JLabel();
+        listaTurma = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
         dialogoCadTurma = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -139,25 +172,22 @@ public class Principal extends javax.swing.JFrame {
         jTable5 = new javax.swing.JTable();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         login = new javax.swing.JTextField();
         senha = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnCadAluno = new javax.swing.JButton();
+        btnCadProfessor = new javax.swing.JButton();
         retorno = new javax.swing.JLabel();
-        pesquisar = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        statusMatricula = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        statusNome = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        btnTurmasDisponiveis = new javax.swing.JButton();
+        btnAdministrador = new javax.swing.JButton();
+        btnTrabalhos = new javax.swing.JButton();
+        comboBoxUsuario = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        btnTurmasDisponiveis1 = new javax.swing.JButton();
+        tabelaRendimentoEscolar = new javax.swing.JLabel();
+        btnTrabalhos1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jMenu1.setText("jMenu1");
@@ -488,7 +518,6 @@ public class Principal extends javax.swing.JFrame {
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         dialogoTrabalhos.setMinimumSize(new java.awt.Dimension(300, 400));
-        dialogoTrabalhos.setPreferredSize(new java.awt.Dimension(300, 400));
 
         jPanel3.setMinimumSize(new java.awt.Dimension(300, 400));
 
@@ -565,112 +594,165 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        dialogoAdministrador.setMinimumSize(new java.awt.Dimension(632, 400));
-        dialogoAdministrador.setPreferredSize(new java.awt.Dimension(656, 400));
+        dialogoAdministrador.setMinimumSize(new java.awt.Dimension(700, 520));
 
-        jPanel4.setMinimumSize(new java.awt.Dimension(632, 400));
+        jPanel4.setMinimumSize(new java.awt.Dimension(620, 532));
+        jPanel4.setPreferredSize(new java.awt.Dimension(620, 532));
+
+        jLabel17.setText("Id Turma:");
+
+        jLabel26.setText("Capacidade");
+
+        jLabel27.setText("Id Disciplina:");
+
+        jLabel28.setText("Nome");
+
+        jLabel29.setText("Ementa");
 
         jLabel21.setText("Administrador");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Id Disciplina", "Nome:", "Ementa:"
+        jButton4.setText("Cadastrar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        });
 
-        jButton10.setText("Pesquisar");
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id Turma", "Disciplina", "Professor", "Capacidade"
+        jButton6.setText("Cadastrar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
-        ));
-        jScrollPane4.setViewportView(jTable4);
+        });
 
-        jButton11.setText("Pesquisar");
+        statusDisciplina.setText("Status");
 
-        jLabel22.setText("Tabela Disciplina:");
+        statusTurma.setText("Status");
 
-        jLabel23.setText("Tabela Turma:");
+        listaDisciplina.setText("Lista Disciplina:");
+
+        listaTurma.setText("Lista Turma:");
+
+        jButton7.setText("Pesquisar");
+
+        jButton8.setText("Remover");
+
+        jLabel19.setText("Status");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel22)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(listaDisciplina)
+                    .addComponent(listaTurma)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(251, 251, 251)
-                            .addComponent(jLabel21)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(idTurma)
+                                .addComponent(jLabel17))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel26)
+                                .addComponent(capacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton10))
+                            .addComponent(jButton6)
+                            .addGap(18, 18, 18)
+                            .addComponent(statusTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addComponent(jLabel23)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(idDisciplina))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel28)
+                                        .addComponent(nomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel29)
+                                        .addComponent(ementaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel21))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton11))
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                            .addComponent(jButton4)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(statusDisciplina, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel21)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10))
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(8, 8, 8)))
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel28))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ementaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)
+                            .addComponent(statusDisciplina))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(listaDisciplina)
+                .addGap(51, 51, 51)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(capacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6))
+                    .addComponent(statusTurma))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listaTurma)
+                .addGap(77, 77, 77)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11))
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel19)
+                .addGap(126, 126, 126))
         );
 
         javax.swing.GroupLayout dialogoAdministradorLayout = new javax.swing.GroupLayout(dialogoAdministrador.getContentPane());
         dialogoAdministrador.getContentPane().setLayout(dialogoAdministradorLayout);
         dialogoAdministradorLayout.setHorizontalGroup(
             dialogoAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dialogoAdministradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                .addContainerGap())
         );
         dialogoAdministradorLayout.setVerticalGroup(
             dialogoAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoAdministradorLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 70, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         dialogoCadTurma.setMinimumSize(new java.awt.Dimension(632, 400));
@@ -749,32 +831,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Turma", "Nome", "Nota1", "Nota2", "Media"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-        }
-
         jLabel1.setText("Login:");
 
         jLabel2.setText("Senha:");
@@ -786,55 +842,65 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Cadastrar Aluno");
+        btnCadAluno.setText("Cadastrar Aluno");
+        btnCadAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadAlunoActionPerformed(evt);
+            }
+        });
+
+        btnCadProfessor.setText("Cadastrar Professor");
+        btnCadProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadProfessorActionPerformed(evt);
+            }
+        });
+
+        retorno.setText("Status");
+
+        btnTurmasDisponiveis.setText("Turmas Dispo Professor");
+        btnTurmasDisponiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTurmasDisponiveisActionPerformed(evt);
+            }
+        });
+
+        btnAdministrador.setText("Administrador");
+        btnAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministradorActionPerformed(evt);
+            }
+        });
+
+        btnTrabalhos.setText("Enviar Trabalho");
+        btnTrabalhos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrabalhosActionPerformed(evt);
+            }
+        });
+
+        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Professor", "Aluno", "Administrador" }));
+
+        jButton3.setText("Sair");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Cadastrar Professor");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnTurmasDisponiveis1.setText("Turmas Dispo Aluno");
+        btnTurmasDisponiveis1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnTurmasDisponiveis1ActionPerformed(evt);
             }
         });
 
-        retorno.setText("Status");
+        tabelaRendimentoEscolar.setText("Lista Rendimento Escolar");
 
-        jButton5.setText("Pesquisar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnTrabalhos1.setText("Atribuir Nota");
+        btnTrabalhos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText("Turmas Disponíveis");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton7.setText("Administrador");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setText("Matrícula");
-
-        statusMatricula.setText("--");
-
-        jLabel19.setText("Nome:");
-
-        statusNome.setText("--");
-
-        jButton8.setText("Trabalhos");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnTrabalhos1ActionPerformed(evt);
             }
         });
         setJMenuBar(jMenuBar1);
@@ -843,86 +909,72 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tabelaRendimentoEscolar)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(9, 9, 9)
+                                .addComponent(login)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3))
+                            .addComponent(retorno, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(retorno, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(statusMatricula)
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel19)
-                        .addGap(18, 18, 18)
-                        .addComponent(statusNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCadAluno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(btnCadProfessor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(btnTurmasDisponiveis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
+                        .addComponent(btnTurmasDisponiveis1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)
+                        .addComponent(btnTrabalhos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
-                .addContainerGap())
+                        .addComponent(btnTrabalhos1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdministrador)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(retorno))
-                        .addGap(0, 11, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5)
-                            .addComponent(jLabel17)
-                            .addComponent(statusMatricula)
-                            .addComponent(jLabel19)
-                            .addComponent(statusNome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(jButton6)
-                            .addComponent(jButton8)
-                            .addComponent(jButton7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(retorno))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadAluno)
+                    .addComponent(btnCadProfessor)
+                    .addComponent(btnTurmasDisponiveis)
+                    .addComponent(btnTrabalhos)
+                    .addComponent(btnTurmasDisponiveis1)
+                    .addComponent(btnAdministrador)
+                    .addComponent(btnTrabalhos1))
+                .addGap(32, 32, 32)
+                .addComponent(tabelaRendimentoEscolar)
+                .addGap(250, 250, 250))
         );
 
         pack();
@@ -944,15 +996,15 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadAnoProfessorActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadAlunoActionPerformed
         // TODO add your handling code here:
         dialogoCadAluno.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCadAlunoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnCadProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadProfessorActionPerformed
         // TODO add your handling code here:
          dialogoCadProfessor.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnCadProfessorActionPerformed
 
     private void cadMesAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadMesAlunoActionPerformed
         // TODO add your handling code here:
@@ -968,15 +1020,51 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {             
-             if (iprof.logar(login.getText(), senha.getText()) != null) {
-                 retorno.setText("Conectado!!!");
+        if (comboBoxUsuario.getSelectedItem() == "Professor") {
+            try {             
+             if (iprof.logar(login.getText(), senha.getText()) != null) {              
+                 retorno.setText("Professor Conectado!!!");
+//            btnAdministrador.setEnabled(false);
+//            btnCadAluno.setEnabled(false);
+//            btnCadProfessor.setEnabled(true);
+//            btnTrabalhos.setEnabled(true);
+//            btnTurmasDisponiveis.setEnabled(true);
+            
              }else{
                  retorno.setText("Usuário não cadastrado!!!");
              }           
             } catch (ExceptionElementoInvalido e) {
                retorno.setText(e.getMessage());
             }
+        }else if (comboBoxUsuario.getSelectedItem() == "Aluno") {
+            try {   
+            
+            if (alun.logar(login.getText(), senha.getText()) != null) {
+                 retorno.setText("Aluno Conectado!!!");
+//            btnAdministrador.setEnabled(false);
+//            btnCadAluno.setEnabled(true);
+//            btnCadProfessor.setEnabled(false);
+//            btnTrabalhos.setEnabled(true);
+//            btnTurmasDisponiveis.setEnabled(true);
+             }else{
+                 retorno.setText("Usuário não cadastrado!!!");
+             }           
+            } catch (ExceptionElementoInvalido e) {
+               retorno.setText(e.getMessage());
+            }
+            
+        }else if (comboBoxUsuario.getSelectedItem() == "Administrador" && (login.getText().equals("adm") && senha.getText().equals("adm"))) {
+//            btnAdministrador.setEnabled(true);
+//            btnCadAluno.setEnabled(false);
+//            btnCadProfessor.setEnabled(false);
+//            btnTrabalhos.setEnabled(false);
+//            btnTurmasDisponiveis.setEnabled(false);
+        }else{
+        retorno.setText("Usuário não cadastrado!!!");
+        }
+        
+                  
+             
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -994,17 +1082,6 @@ public class Principal extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-          try {
-                int v1 = Integer.parseInt(pesquisar.getText());
-                System.out.println(iprof.buscarProfessor(v1));
-                retorno.setText("Carregando...");
-            } catch (Exception e) {
-               retorno.setText(e.getMessage());
-            }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
            int v1 = Integer.parseInt(cadMatriculaAluno.getText());
@@ -1021,20 +1098,66 @@ public class Principal extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
         // TODO add your handling code here:
         dialogoAdministrador.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnAdministradorActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnTrabalhosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrabalhosActionPerformed
         // TODO add your handling code here:
         dialogoTrabalhos.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnTrabalhosActionPerformed
+
+    private void btnTurmasDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTurmasDisponiveisActionPerformed
+        // TODO add your handling code here:
+        dialogoCadTurma.setVisible(true);
+    }//GEN-LAST:event_btnTurmasDisponiveisActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Principal().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnTurmasDisponiveis1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTurmasDisponiveis1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTurmasDisponiveis1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int v1 = Integer.parseInt(idDisciplina.getText());
+        Disciplina disc = new Disciplina(v1, nomeDisciplina.getText(),ementaDisciplina.getText());
+                try {
+                    ds.inserirDisciplina(disc);
+                    statusDisciplina.setText("Cadastro realizado com sucesso");
+                    idDisciplina.setText("");
+                    nomeDisciplina.setText("");
+                    ementaDisciplina.setText("");
+                    listaDisciplina.setText(ds.listarDisciplina().toString());
+                } catch (ExceptionElementoExiste ex) {
+                    statusDisciplina.setText(ex.getMessage());
+                }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        dialogoCadTurma.setVisible(true);
+         int v1 = Integer.parseInt(idTurma.getText());
+          int v2 = Integer.parseInt(capacidade.getText());
+        Turma Tur = new Turma(v1, v2);
+                try {
+                    trm.inserirTurma(Tur);
+                    statusTurma.setText("Cadastro realizado com sucesso");
+                    listaTurma.setText(trm.listarTurma().toString());
+                    idTurma.setText("");
+                    capacidade.setText("");
+                } catch (ExceptionElementoExiste ex) {
+                    statusTurma.setText(ex.getMessage());
+                }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnTrabalhos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrabalhos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrabalhos1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1072,6 +1195,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdministrador;
+    private javax.swing.JButton btnCadAluno;
+    private javax.swing.JButton btnCadProfessor;
+    private javax.swing.JButton btnTrabalhos;
+    private javax.swing.JButton btnTrabalhos1;
+    private javax.swing.JButton btnTurmasDisponiveis;
+    private javax.swing.JButton btnTurmasDisponiveis1;
     private javax.swing.JTextField cadAnoAluno;
     private javax.swing.JTextField cadAnoProfessor;
     private javax.swing.JTextField cadCargoProfessor;
@@ -1088,20 +1218,22 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField cadPeriodoAluno;
     private javax.swing.JTextField cadSenhaAluno;
     private javax.swing.JTextField cadSenhaProfessor;
+    private javax.swing.JTextField capacidade;
+    private javax.swing.JComboBox comboBoxUsuario;
     private javax.swing.JDialog dialogoAdministrador;
     private javax.swing.JDialog dialogoCadAluno;
     private javax.swing.JDialog dialogoCadProfessor;
     private javax.swing.JDialog dialogoCadTurma;
     private javax.swing.JDialog dialogoTrabalhos;
+    private javax.swing.JTextField ementaDisciplina;
+    private javax.swing.JTextField idDisciplina;
+    private javax.swing.JTextField idTurma;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1121,9 +1253,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1159,28 +1293,24 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel listaDisciplina;
+    private javax.swing.JLabel listaTurma;
     private javax.swing.JTextField login;
-    private javax.swing.JTextField pesquisar;
+    private javax.swing.JTextField nomeDisciplina;
     private javax.swing.JLabel retorno;
     private javax.swing.JLabel retornoAluno;
     private javax.swing.JLabel retornoProfessor;
     private javax.swing.JTextField senha;
-    private javax.swing.JLabel statusMatricula;
-    private javax.swing.JLabel statusNome;
+    private javax.swing.JLabel statusDisciplina;
+    private javax.swing.JLabel statusTurma;
+    private javax.swing.JLabel tabelaRendimentoEscolar;
     // End of variables declaration//GEN-END:variables
 }

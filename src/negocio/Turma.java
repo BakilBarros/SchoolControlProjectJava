@@ -57,8 +57,8 @@ public class Turma {
 
 	@Override
 	public String toString() {
-		return "Turma [idTurma=" + idTurma + ", disciplinaTurma=" + disciplinaTurma + ", professorTurma="
-				+ professorTurma + ", capacidadeTurma=" + capacidadeTurma + "]";
+		return "Turma [idTurma: " + idTurma + ", disciplinaTurma: " + disciplinaTurma + ", professorTurma: "
+				+ professorTurma + ", capacidadeTurma: " + capacidadeTurma + "]\r\n";
 	}
 
 
