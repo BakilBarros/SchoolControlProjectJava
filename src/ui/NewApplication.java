@@ -31,17 +31,17 @@ public class NewApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Disciplina disc = new Disciplina(1, "Português",
-				"Importância, contribuições e fatores relevantes do processo de construção do saberes.");
-		Disciplina disc1 = new Disciplina(2, "Matemática",
-				"Importância, contribuições e fatores relevantes do processo de construção do saberes.");
-		Disciplina disc2 = new Disciplina(3, "Química",
-				"Importância, contribuições e fatores relevantes do processo de construção do saberes.");
-		Disciplina disc3 = new Disciplina(4, "Química",
-				"Importância, contribuições e fatores relevantes do processo de construção do saberes.");
+		Disciplina disc = new Disciplina(1, "Portuguï¿½s",
+				"Importï¿½ncia, contribuiï¿½ï¿½es e fatores relevantes do processo de construï¿½ï¿½o do saberes.");
+		Disciplina disc1 = new Disciplina(2, "Matemï¿½tica",
+				"Importï¿½ncia, contribuiï¿½ï¿½es e fatores relevantes do processo de construï¿½ï¿½o do saberes.");
+		Disciplina disc2 = new Disciplina(3, "Quï¿½mica",
+				"Importï¿½ncia, contribuiï¿½ï¿½es e fatores relevantes do processo de construï¿½ï¿½o do saberes.");
+		Disciplina disc3 = new Disciplina(4, "Quï¿½mica",
+				"Importï¿½ncia, contribuiï¿½ï¿½es e fatores relevantes do processo de construï¿½ï¿½o do saberes.");
 
 		Professor prof = new Professor(1, "Calos Maia", "Professor", "1", "1", new Date(13, 10, 1996));
-		Professor prof2 = new Professor(2, "João Marcelo", "Professor", "1234", "Joao2019", new Date(18, 12, 1986));
+		Professor prof2 = new Professor(2, "Joï¿½o Marcelo", "Professor", "1234", "Joao2019", new Date(18, 12, 1986));
 
 		Turma Tur = new Turma(1, disc, prof2, 20);
 		Turma Tur2 = new Turma(2, disc1, prof2, 20);
@@ -61,12 +61,12 @@ public class NewApplication {
 		
 		
 				// Teste turma
-				 try {
-					trm.inserirTurma(Tur);
-				} catch (ExceptionElementoExiste e) {
-					// TODO Auto-generated catch block
-					System.out.println(e.getMessage());
-				}
+//				 try {
+//					trm.inserirTurma(Tur);
+//				} catch (ExceptionElementoExiste e) {
+//					// TODO Auto-generated catch block
+//					System.out.println(e.getMessage());
+//				}
 				// trm.inserirTurma(Tur2);
 				// trm.inserirTurma(Tur3);
 				// trm.inserirTurma(Tur4);
@@ -78,13 +78,13 @@ public class NewApplication {
 				// ds.inserirDisciplina(disc1);
 				// ds.inserirDisciplina(disc2);
 
-				 try {
-					System.out.println(ds.buscarDisciplina(0));
-				} catch (ExceptionElementoInvalido e) {
-					// TODO Auto-generated catch block
-					System.out.println(e.getMessage());
-				}
-				 System.out.println(ds.listarDisciplina());
+//				 try {
+//					System.out.println(ds.buscarDisciplina(0));
+//				} catch (ExceptionElementoInvalido e) {
+//					// TODO Auto-generated catch block
+//					System.out.println(e.getMessage());
+//				}
+//				 System.out.println(ds.listarDisciplina());
 
 				// Teste Rendimento escolar
 				// rd.atribuir(renEsc);
@@ -103,11 +103,20 @@ public class NewApplication {
 				// System.out.println(trm.exibirTurmasDisponiveisProfessor(2));
 
 				// Teste aluno
-				// alun.inserirAluno(alu);
+                                try {
+                alun.inserirAluno(alu);
+            } catch (Exception e) {
+            }
+				 
 
 				// System.out.println(alun.buscarAluno(2));
 				// System.out.println(alun.listarAluno());
-				// System.out.println(alun.logar("2", "2"));
+                                
+                                try {
+ System.out.println(alun.logar("1", "1"));                
+            } catch (Exception e) {
+            }
+;
 				// System.out.println(rd.listarTurmasAluno(2));
 				// System.out.println(rd.exibirRendimentoEscolarDoAluno(2));
 				// System.out.println(rd.listarTurmasDisponiveisAluno(2));

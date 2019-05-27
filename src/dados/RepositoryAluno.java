@@ -22,9 +22,12 @@ public class RepositoryAluno implements IRepositoryAluno {
 		for (Aluno aluno : alunosDoBanco) {
 			if (aluno.getLoginAluno().equals(login) && aluno.getSenhaAluno().equals(senha)) {
 				return aluno;
-			}
+			}else{
+                throw new ExceptionElementoInvalido("Login InvÃ¡lido");        
+                        }
 		}
-		throw new ExceptionElementoInvalido("Login Inválido");
+            return null;
+		
 	}
 
 	@Override
@@ -45,7 +48,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 				return aluno;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+		throw new ExceptionElementoInvalido("Matrï¿½cula Invï¿½lida!!");
 	}
 
 	@Override
@@ -57,7 +60,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 				break;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+		throw new ExceptionElementoInvalido("Matrï¿½cula Invï¿½lida!!");
 	}
 
 	@Override
@@ -68,7 +71,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 				return aluno;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+		throw new ExceptionElementoInvalido("Matrï¿½cula Invï¿½lida!!");
 
 	}
 

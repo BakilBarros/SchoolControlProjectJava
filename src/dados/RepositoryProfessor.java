@@ -21,9 +21,11 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 		for (Professor professor : professoresDoBanco) {
 			if (professor.getLoginProfessor().equals(login) && professor.getSenhaProfessor().equals(senha)) {
 				return professor;
-			}
+			}else{
+                throw new ExceptionElementoInvalido("Login InvÃ¡lido");        
+                        }
 		}
-		throw new ExceptionElementoInvalido("Login Inválido");
+		return null;
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 				break;
 			}
 		}
-		throw new ExceptionElementoInvalido("Pesquisa Inválida!!");
+		throw new ExceptionElementoInvalido("Pesquisa Invï¿½lida!!");
 	}
 
 	@Override
@@ -56,7 +58,7 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 				return professor;
 			}
 		}
-		throw new ExceptionElementoInvalido("Pesquisa Inválida!!");
+		throw new ExceptionElementoInvalido("Pesquisa Invï¿½lida!!");
 	}
 
 	@Override
