@@ -13,8 +13,8 @@ public class Turma {
 
 	public Turma(int idTurma, Disciplina disciplinaTurma, Professor professorTurma, int capacidadeTurma) {
 		this.idTurma = idTurma;
-		this.disciplinaTurma = disciplinaTurma;
-		this.professorTurma = professorTurma;
+		this.disciplinaTurma = null;
+		this.professorTurma = null;
 		this.capacidadeTurma = capacidadeTurma;
 	}
 	

@@ -25,11 +25,11 @@ import negocio.Professor;
  */
 public class CadProfessor extends javax.swing.JFrame {
     
-    	private static IFechadaAluno alun = new FechadaAluno();
-	private static IFechadaTurma trm = new FechadaTurma();
-	private static IFechadaDisciplina ds = new FechadaDisciplina();
-	private static IFechadaRendimentoEscolar rd = new FechadaRendimentoEscolar();
-	private static IFechadaProfessor iprof = new FechadaProfessor();
+        private static IFechadaAluno alun = FechadaAluno.getInstancia();
+	private static IFechadaTurma trm = FechadaTurma.getInstancia();
+	private static IFechadaDisciplina ds = FechadaDisciplina.getInstancia();
+	private static IFechadaRendimentoEscolar rd = FechadaRendimentoEscolar.getInstancia();
+	private static IFechadaProfessor iprof = FechadaProfessor.getInstancia();
 
     /**
      * Creates new form CadProfessor
@@ -227,9 +227,7 @@ public class CadProfessor extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Login login = new Login();
-        login.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

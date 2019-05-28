@@ -5,10 +5,19 @@ import java.util.List;
 public class FechadaRendimentoEscolar implements IFechadaRendimentoEscolar {
 
 	private RendimentoEscolarControlador rendimentoEscolarControlador;
+        private static FechadaRendimentoEscolar instancia;
+        
 
 	public FechadaRendimentoEscolar() {
 		rendimentoEscolarControlador = new RendimentoEscolarControlador();
 	}
+        
+          public static FechadaRendimentoEscolar getInstancia(){
+            if (instancia == null) {
+                instancia = new FechadaRendimentoEscolar();
+            }         
+            return instancia;     
+        }
 
 	@Override
 	public String calculoPorcentagem() {

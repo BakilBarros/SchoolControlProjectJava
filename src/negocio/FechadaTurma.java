@@ -5,10 +5,18 @@ import java.util.List;
 public class FechadaTurma implements IFechadaTurma {
 
 	private TurmaControlador turmaControlador;
+        private static FechadaTurma instancia;
 
 	public FechadaTurma() {
 		turmaControlador = new TurmaControlador();
 	}
+        
+        public static FechadaTurma getInstancia(){
+            if (instancia == null) {
+                instancia = new FechadaTurma();
+            }         
+            return instancia;     
+        }
 
 	@Override
 	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor) {

@@ -5,10 +5,19 @@ import java.util.List;
 public class FechadaProfessor implements IFechadaProfessor {
 
 	private ProfessorControlador professorControlador;
-
+          private static FechadaProfessor instancia;
+        
 	public FechadaProfessor() {
 		professorControlador = new ProfessorControlador();
 	}
+        
+         public static FechadaProfessor getInstancia(){
+            if (instancia == null) {
+                instancia = new FechadaProfessor();
+            }         
+            return instancia;     
+        }
+
 
 	@Override
 	public Professor logar(String login, String senha) throws ExceptionElementoInvalido{

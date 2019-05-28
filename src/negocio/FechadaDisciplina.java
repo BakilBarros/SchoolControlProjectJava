@@ -5,10 +5,18 @@ import java.util.List;
 public class FechadaDisciplina implements IFechadaDisciplina {
 
 	private DisciplinaControlador disciplinaControlador;
+        private static FechadaDisciplina instancia;
 
 	public FechadaDisciplina() {
 		disciplinaControlador = new DisciplinaControlador();
 	}
+        
+         public static FechadaDisciplina getInstancia(){
+            if (instancia == null) {
+                instancia = new FechadaDisciplina();
+            }         
+            return instancia;     
+        }
 
 	@Override
 	public void inserirDisciplina(Disciplina disciplina) throws ExceptionElementoExiste{

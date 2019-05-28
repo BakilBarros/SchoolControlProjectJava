@@ -5,10 +5,20 @@ import java.util.List;
 public class FechadaAluno implements IFechadaAluno {
 
 	private AlunoControlador alunoControlador;
+        private static FechadaAluno instancia;
 
 	public FechadaAluno() {
 		alunoControlador = new AlunoControlador();
 	}
+        
+        
+        public static FechadaAluno getInstancia(){
+         
+            if (instancia == null) {
+                instancia = new FechadaAluno();
+            }         
+            return instancia;     
+        }
 
 	@Override
 	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido{
