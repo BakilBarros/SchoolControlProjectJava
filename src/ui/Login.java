@@ -5,8 +5,8 @@
  */
 package ui;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
 import negocio.ExceptionElementoInvalido;
 import negocio.FechadaAluno;
 import negocio.FechadaDisciplina;
@@ -93,7 +93,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PROFESSOR", "ALUNO", "ADMINISTRADOR" }));
+        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Professor", "Aluno", "Administrador" }));
         comboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxUsuarioActionPerformed(evt);
@@ -114,16 +114,16 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(senha)
-                            .addComponent(login)
-                            .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(comboBoxUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(login))))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,18 +171,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
           if (comboBoxUsuario.getSelectedItem() == "Professor") {
             try {             
-             if (iprof.logar(login.getText(), senha.getText()) != null) {              
-                 retorno.setText("Professor Conectado!!!");
-//            btnAdministrador.setEnabled(false);
-//            btnCadAluno.setEnabled(false);
-//            btnCadProfessor.setEnabled(true);
-//            btnTrabalhos.setEnabled(true);
-//            btnTurmasDisponiveis.setEnabled(true);
-            
+             if (iprof.logar(login.getText(), senha.getText()) != null) {                                                      
+                 retorno.setText("Professor Conectado!");         
+                  GerProfessor cd = new GerProfessor();
+                  cd.setVisible(true);
              }else{
-                 retorno.setText("Usuário não cadastrado!!!");
+                 retorno.setText("Usuário não cadastrado!");
              }           
             } catch (ExceptionElementoInvalido e) {
                retorno.setText(e.getMessage());
@@ -191,35 +188,29 @@ public class Login extends javax.swing.JFrame {
             try {   
             
             if (alun.logar(login.getText(), senha.getText()) != null) {
-                 retorno.setText("Aluno Conectado!!!");
-//            btnAdministrador.setEnabled(false);
-//            btnCadAluno.setEnabled(true);
-//            btnCadProfessor.setEnabled(false);
-//            btnTrabalhos.setEnabled(true);
-//            btnTurmasDisponiveis.setEnabled(true);
+                 retorno.setText("Aluno Conectado!");
+                  GerAluno cd = new GerAluno();
+                  cd.setVisible(true);
              }else{
-                 retorno.setText("Usuário não cadastrado!!!");
+                 retorno.setText("Usuário não cadastrado!");
              }           
             } catch (ExceptionElementoInvalido e) {
                retorno.setText(e.getMessage());
             }
             
         }else if (comboBoxUsuario.getSelectedItem() == "Administrador" && (login.getText().equals("adm") && senha.getText().equals("adm"))) {
-//            btnAdministrador.setEnabled(true);
-//            btnCadAluno.setEnabled(false);
-//            btnCadProfessor.setEnabled(false);
-//            btnTrabalhos.setEnabled(false);
-//            btnTurmasDisponiveis.setEnabled(false);
+             GerAdministrador cd = new GerAdministrador();
+                  cd.setVisible(true);
         }else{
-        retorno.setText("Usuário não cadastrado!!!");
+        retorno.setText("Usuário não cadastrado!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-//        CadProfessor cp = new CadProfessor();
-//        cp.setVisible(true);
-//        this.setVisible(false);
+        CadProfessor cp = new CadProfessor();
+        cp.setVisible(true);
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed

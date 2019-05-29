@@ -1085,17 +1085,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel val = (DefaultTableModel) tabelaPrincipal.getModel();
-                     Vector row = new Vector();
-                     Turma t = new Turma();
-                     row.add(t.getIdTurma());
-//                     row.add(t.getDisciplinaTurma().getNomeDisciplina());
-//                     row.add(t.getProfessorTurma().getNomeProfessor());
-                     row.add(t.getCapacidadeTurma());
-                     val.addRow(row);
+         
         if (comboBoxUsuario.getSelectedItem() == "Professor") {
             try {             
-             if (iprof.logar(login.getText(), senha.getText()) != null) {              
+             if (iprof.logar(login.getText(), senha.getText()) != null) {    
+                 
+                 
+                     DefaultTableModel val = (DefaultTableModel) tabelaPrincipal.getModel();
+                     Vector row = new Vector();
+             
+                     for (int i = 0; i < trm.listarTurma().size(); i++) {
+                     //row.add(trm.listarTurma().get(i).getIdTurma().);
+                     row.add(trm.listarTurma().get(i).getProfessorTurma().toString());
+                     row.add(trm.listarTurma().get(i).getDisciplinaTurma().toString());
+                     //row.add(trm.listarTurma().get(i).getCapacidadeTurma();
+                         System.out.println(i);
+                         System.out.println(trm.listarTurma());
+                     val.addRow(row); 
+                     }
+                     
+                    
+                      
+                 
                  retorno.setText("Professor Conectado!!!");
 //            btnAdministrador.setEnabled(false);
 //            btnCadAluno.setEnabled(false);
