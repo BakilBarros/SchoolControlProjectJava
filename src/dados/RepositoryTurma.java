@@ -45,9 +45,11 @@ public class RepositoryTurma implements IRepositoryTurma {
 			if (turma.getIdTurma() == idTurma) {
 				turmasDoBanco.remove(turma);
 				break;
-			}
-		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+			}else{
+                        
+                 throw new ExceptionElementoInvalido("MatrÃ­cula InvÃ¡lida!!");       
+                        }
+                }
 
 	}
 
@@ -59,7 +61,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 				return turma;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+		throw new ExceptionElementoInvalido("Matrï¿½cula Invï¿½lida!!");
 	}
 
 	@Override

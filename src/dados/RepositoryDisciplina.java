@@ -33,9 +33,11 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 			if (disciplina.getIdDisciplina() == idDisciplina) {
 				disciplinaDoBanco.remove(disciplina);
 				break;
-			}
+			}else{
+                throw new ExceptionElementoInvalido("Identificador InvÃ¡lido");        
+                        }
 		}
-		throw new ExceptionElementoInvalido("Identificador Inválido");
+		
 	}
 
 	@Override
@@ -46,7 +48,7 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 				return disciplina;
 			}
 		}
-		throw new ExceptionElementoInvalido("Identificador Inválido");
+		throw new ExceptionElementoInvalido("Identificador Invï¿½lido");
 	}
 
 	@Override

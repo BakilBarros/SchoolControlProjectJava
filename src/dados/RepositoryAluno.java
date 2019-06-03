@@ -58,9 +58,13 @@ public class RepositoryAluno implements IRepositoryAluno {
 			if (aluno.getMatricula() == matricula) {
 				alunosDoBanco.remove(aluno);
 				break;
-			}
+			}else{
+                            
+                        throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+                        
+                        }
 		}
-		throw new ExceptionElementoInvalido("Matr�cula Inv�lida!!");
+		
 	}
 
 	@Override

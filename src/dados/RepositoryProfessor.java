@@ -45,9 +45,14 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 			if (professor.getIdProfessor() == idProfessor) {
 				professoresDoBanco.remove(professor);
 				break;
-			}
+			}else{
+                            
+                throw new ExceptionElementoInvalido("Pesquisa Inválida!!"); 
+                
+                        }
+                        
 		}
-		throw new ExceptionElementoInvalido("Pesquisa Inv�lida!!");
+		
 	}
 
 	@Override
