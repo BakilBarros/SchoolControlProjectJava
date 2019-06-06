@@ -2,9 +2,11 @@ package dados;
 
 import java.util.ArrayList;
 import java.util.List;
+import negocio.Disciplina;
 
 import negocio.ExceptionElementoExiste;
 import negocio.ExceptionElementoInvalido;
+import negocio.Professor;
 import negocio.Turma;
 
 public class RepositoryTurma implements IRepositoryTurma {
@@ -17,11 +19,12 @@ public class RepositoryTurma implements IRepositoryTurma {
 		armazenaVetor = new ArrayList<>();
 	}
 
+        
 	@Override
 	public List<Turma> exibirTurmasDisponiveisProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		for (Turma turma : turmasDoBanco) {
-			if (turma.getProfessorTurma().getIdProfessor() != idProfessor) {
+			if (turma.getProfessorTurma() == null || turma.getProfessorTurma().getIdProfessor() != idProfessor) {
 				armazenaVetor.add(turma);
 			}
 		}
@@ -61,7 +64,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 				return turma;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matr�cula Inv�lida!!");
+		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
 	}
 
 	@Override
@@ -74,7 +77,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 	public List<Turma> listarTurmasProfessor(int idProfessor) {
 		// TODO Auto-generated method stub
 		for (Turma turma : turmasDoBanco) {
-			if (turma.getProfessorTurma().getIdProfessor() == idProfessor) {
+			if (turma.getProfessorTurma() != null && turma.getProfessorTurma().getIdProfessor() == idProfessor) {
 				armazenaVetor.add(turma);
 			}
 		}
@@ -91,4 +94,19 @@ public class RepositoryTurma implements IRepositoryTurma {
 		}
 		return false;
 	}
+
+    @Override
+    public void alterarTurma(int idTurma, Disciplina disciplina, Professor professor) throws ExceptionElementoInvalido {
+        for (Turma t : turmasDoBanco) {
+            if (t.getIdTurma() == idTurma) {
+                t.setDisciplinaTurma(disciplina);
+                t.setProfessorTurma(professor);
+                throw new ExceptionElementoInvalido("Turma Cadastrada!");    
+            }else{
+                    throw new ExceptionElementoInvalido("Turma Inválida!");    
+            }
+        }
+        
+        
+    }
 }

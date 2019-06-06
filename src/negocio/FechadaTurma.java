@@ -55,4 +55,12 @@ public class FechadaTurma implements IFechadaTurma {
 		return turmaControlador.listarTurmasProfessor(idProfessor);
 	}
 
+
+    @Override
+    public void alterarTurma(int idTurma, Disciplina disciplina, Professor professor) throws ExceptionElementoInvalido{
+        turmaControlador.alterarTurma(idTurma, disciplina, professor);
+    }
+
+
+    
 }

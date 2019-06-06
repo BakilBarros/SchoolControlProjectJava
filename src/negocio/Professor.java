@@ -26,6 +26,15 @@ public class Professor {
 		this.senhaProfessor = senhaProfessor;
 		this.dataNascimentoProfessor = dataNascimentoProfessor;
 	}
+        
+        public Professor(String nomeProfessor, String cargoProfessor, String loginProfessor,
+			String senhaProfessor, Date dataNascimentoProfessor) {
+		this.nomeProfessor = nomeProfessor;
+		this.cargoProfessor = cargoProfessor;
+		this.loginProfessor = loginProfessor;
+		this.senhaProfessor = senhaProfessor;
+		this.dataNascimentoProfessor = dataNascimentoProfessor;
+	}
 
 	public int getIdProfessor() {
 		return idProfessor;

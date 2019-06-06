@@ -44,4 +44,9 @@ public class TurmaControlador{
 		return irepositoryTurma.listarTurmasProfessor(idProfessor);
 	}
 
+
+    public void alterarTurma(int idTurma, Disciplina disciplina, Professor professor) throws ExceptionElementoInvalido {
+       irepositoryTurma.alterarTurma(idTurma, disciplina, professor);
+    }
+
 }

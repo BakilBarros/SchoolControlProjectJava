@@ -7,6 +7,7 @@ package ui;
 
 
 
+import negocio.Aluno;
 import negocio.ExceptionElementoInvalido;
 import negocio.FechadaAluno;
 import negocio.FechadaDisciplina;
@@ -18,6 +19,7 @@ import negocio.IFechadaDisciplina;
 import negocio.IFechadaProfessor;
 import negocio.IFechadaRendimentoEscolar;
 import negocio.IFechadaTurma;
+import negocio.Professor;
 
 /**
  *
@@ -37,6 +39,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
+         public int idAluno2;
+         public int idProfessor2;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,11 +175,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         
-          if (comboBoxUsuario.getSelectedItem() == "Professor") {
+        if (comboBoxUsuario.getSelectedItem() == "Professor") {
             try {             
-             if (iprof.logar(login.getText(), senha.getText()) != null) {                                                      
-                 retorno.setText("Professor Conectado!");         
+             if (iprof.logar(login.getText(), senha.getText()) != null) {                    
+                 for (Professor p : iprof.listarProfessor()) {
+                     idProfessor2 = p.getIdProfessor();
+                 }
                   GerProfessor cd = new GerProfessor();
                   cd.setVisible(true);
              }else{
@@ -188,7 +195,9 @@ public class Login extends javax.swing.JFrame {
             try {   
             
             if (alun.logar(login.getText(), senha.getText()) != null) {
-                 retorno.setText("Aluno Conectado!");
+                    for (Aluno a : alun.listarAluno()) {
+                     idAluno2 = a.getMatricula();
+                 }
                   GerAluno cd = new GerAluno();
                   cd.setVisible(true);
              }else{
@@ -204,6 +213,8 @@ public class Login extends javax.swing.JFrame {
         }else{
         retorno.setText("Usuário não cadastrado!");
         }
+          
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -219,6 +230,7 @@ public class Login extends javax.swing.JFrame {
 
     private void comboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUsuarioActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_comboBoxUsuarioActionPerformed
 
     /**
