@@ -146,7 +146,7 @@ public class Aplicacao {
             }
                  
             try {
-              System.out.println(trm.buscarTurma(2));
+              System.out.println(trm.buscarTurma(3));
             } catch (ExceptionElementoInvalido ex) {
                  System.out.println(ex.getMessage());
             }

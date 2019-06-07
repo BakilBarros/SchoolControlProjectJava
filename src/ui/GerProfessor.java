@@ -33,16 +33,26 @@ public class GerProfessor extends javax.swing.JFrame {
 	private static IFechadaDisciplina ds = FechadaDisciplina.getInstancia();
 	private static IFechadaRendimentoEscolar rd = FechadaRendimentoEscolar.getInstancia();
 	private static IFechadaProfessor iprof = FechadaProfessor.getInstancia();
-    /**
+        /**
      * Creates new form GerProfessor
      */
     public GerProfessor() {
-        initComponents();
+        initComponents();       
+         Login l = new Login(); 
+         int vp = l.idProfessor2;
+         int va = l.idAluno2;
          
-         Login l = new Login();          
+        DefaultTableModel tab1 = (DefaultTableModel) tabelaTurmaProfessor.getModel();  
+          if (trm.listarTurmasProfessor(vp) == null) {  
+            tab1.addRow(new Object[]{null, null, null, null});    
+        }else{
+          for (Turma t : trm.listarTurmasProfessor(vp)) {
+            tab1.addRow(new Object[]{t.getIdTurma(), t.getDisciplinaTurma().getNomeDisciplina(), t.getProfessorTurma().getNomeProfessor(), t.getCapacidadeTurma()});
+          }
+         }
          
          DefaultTableModel tab2 = (DefaultTableModel) tabelaTurmaDisponivelProfessor.getModel();  
-         for (Turma t2 : trm.exibirTurmasDisponiveisProfessor(l.idProfessor2)) {
+         for (Turma t2 : trm.exibirTurmasDisponiveisProfessor(vp)) {
          tab2.addRow(new Object[]{t2.getIdTurma(), null, null,  t2.getCapacidadeTurma()});
          }
          
@@ -63,7 +73,6 @@ public class GerProfessor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        retorno = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTurmaDisponivelProfessor = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -82,6 +91,7 @@ public class GerProfessor extends javax.swing.JFrame {
         IdProfessor = new javax.swing.JTextField();
         idDisciplina = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        retorno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(735, 535));
@@ -89,8 +99,6 @@ public class GerProfessor extends javax.swing.JFrame {
 
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 1000));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 1000));
-
-        retorno.setText("Tela Professor");
 
         tabelaTurmaDisponivelProfessor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,6 +161,11 @@ public class GerProfessor extends javax.swing.JFrame {
         jLabel4.setText("Rentimento Escolar Aluno");
 
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Login");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +186,8 @@ public class GerProfessor extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        retorno.setText("Retorno");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,9 +222,9 @@ public class GerProfessor extends javax.swing.JFrame {
                                 .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(retorno)
+                            .addComponent(jButton5)
+                            .addGap(18, 18, 18)
+                            .addComponent(retorno))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -217,33 +232,31 @@ public class GerProfessor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5)
                     .addComponent(retorno))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -271,6 +284,7 @@ public class GerProfessor extends javax.swing.JFrame {
         // TODO add your handling code here:
           Login log = new Login();
          log.setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -279,8 +293,7 @@ public class GerProfessor extends javax.swing.JFrame {
         int v2 = Integer.parseInt(idDisciplina.getText());
         int v3 = Integer.parseInt(IdProfessor.getText());      
          Disciplina dis = null;
-         Professor pro = null;
-         
+         Professor pro = null;         
         
         for (Disciplina d : ds.listarDisciplina()) {
             if (d.getIdDisciplina() == v2) {
@@ -304,13 +317,11 @@ public class GerProfessor extends javax.swing.JFrame {
         retorno.setText(e.getMessage());
         }
         
-         DefaultTableModel tab1 = (DefaultTableModel) tabelaTurmaProfessor.getModel();  
-         for (Turma t : trm.listarTurmasProfessor(v3)) {
-         tab1.addRow(new Object[]{t.getIdTurma(), t.getDisciplinaTurma().getNomeDisciplina(), t.getProfessorTurma().getNomeProfessor(), t.getCapacidadeTurma()});
-         }
-        
-        
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -39,9 +39,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-         public int idAluno2;
-         public int idProfessor2;
-
+     int idAluno2;
+     int idProfessor2;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,10 +172,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         CadAluno cd = new CadAluno();
         cd.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         
         if (comboBoxUsuario.getSelectedItem() == "Professor") {
             try {             
@@ -185,6 +185,7 @@ public class Login extends javax.swing.JFrame {
                  }
                   GerProfessor cd = new GerProfessor();
                   cd.setVisible(true);
+                  this.setVisible(false);
              }else{
                  retorno.setText("Usuário não cadastrado!");
              }           
@@ -200,6 +201,7 @@ public class Login extends javax.swing.JFrame {
                  }
                   GerAluno cd = new GerAluno();
                   cd.setVisible(true);
+                  this.setVisible(false);
              }else{
                  retorno.setText("Usuário não cadastrado!");
              }           
@@ -209,7 +211,8 @@ public class Login extends javax.swing.JFrame {
             
         }else if (comboBoxUsuario.getSelectedItem() == "Administrador" && (login.getText().equals("adm") && senha.getText().equals("adm"))) {
              GerAdministrador cd = new GerAdministrador();
-                  cd.setVisible(true);
+             cd.setVisible(true);
+             this.setVisible(false);
         }else{
         retorno.setText("Usuário não cadastrado!");
         }
@@ -221,6 +224,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         CadProfessor cp = new CadProfessor();
         cp.setVisible(true);
+        this.setVisible(false);
     
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -22,15 +22,7 @@ public class Turma {
 		this.idTurma = idTurma;
 		this.professorTurma = null;
 		this.capacidadeTurma = capacidadeTurma;
-	}
-        
-        public Turma(int idTurma, Disciplina disciplinaTurma, int capacidadeTurma) {
-		this.idTurma = idTurma;
-		this.disciplinaTurma = null;
-		this.capacidadeTurma = capacidadeTurma;
-	}
-        
-        
+	}     
 	
 	public Turma(int idTurma, int capacidadeTurma) {
 		this.idTurma = idTurma;

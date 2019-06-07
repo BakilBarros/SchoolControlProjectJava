@@ -97,13 +97,13 @@ public class RepositoryTurma implements IRepositoryTurma {
 
     @Override
     public void alterarTurma(int idTurma, Disciplina disciplina, Professor professor) throws ExceptionElementoInvalido {
+        // TODO Auto-generated method stub
         for (Turma t : turmasDoBanco) {
             if (t.getIdTurma() == idTurma) {
                 t.setDisciplinaTurma(disciplina);
-                t.setProfessorTurma(professor);
-                throw new ExceptionElementoInvalido("Turma Cadastrada!");    
+                t.setProfessorTurma(professor);   
             }else{
-                    throw new ExceptionElementoInvalido("Turma Inválida!");    
+                throw new ExceptionElementoInvalido("Turma Inválida!");    
             }
         }
         
