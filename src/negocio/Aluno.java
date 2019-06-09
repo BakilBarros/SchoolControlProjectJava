@@ -75,9 +75,8 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "Aluno [matricula=" + matricula + ", nomeAluno=" + nomeAluno + ", dataNascimentoAluno="
-				+ dataNascimentoAluno + ", periodoAluno=" + periodoAluno + ", loginAluno=" + loginAluno
-				+ ", senhaAluno=" + senhaAluno + "]";
+		return "Aluno [Matricula: " + matricula + ", Nome Aluno: " + nomeAluno + ", Período:" + periodoAluno + ", Login: " + loginAluno
+				+ ", Senha: " + senhaAluno + "]";
 	}
 
 }

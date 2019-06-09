@@ -114,7 +114,7 @@ public class Aplicacao {
                 // System.out.println(alun.logar("2", "2"));
                 // System.out.println(rd.listarTurmasAluno(2));
                 // System.out.println(rd.exibirRendimentoEscolarDoAluno(2));
-                // System.out.println(rd.listarTurmasDisponiveisAluno(2));
+                 System.out.println(rd.listarTurmasDisponiveisAluno(2));
                 
                 // Teste Administrador
                 

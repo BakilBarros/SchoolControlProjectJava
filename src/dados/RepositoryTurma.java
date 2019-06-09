@@ -99,7 +99,7 @@ public class RepositoryTurma implements IRepositoryTurma {
     public void alterarTurma(int idTurma, Disciplina disciplina, Professor professor) throws ExceptionElementoInvalido {
         // TODO Auto-generated method stub
         for (Turma t : turmasDoBanco) {
-            if (t.getIdTurma() == idTurma) {
+            if (1 == idTurma) {
                 t.setDisciplinaTurma(disciplina);
                 t.setProfessorTurma(professor);   
             }else{

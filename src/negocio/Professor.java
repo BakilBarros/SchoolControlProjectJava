@@ -86,9 +86,8 @@ public class Professor {
 
 	@Override
 	public String toString() {
-		return "Professor [idProfessor=" + idProfessor + ", nomeProfessor=" + nomeProfessor + ", cargoProfessor="
-				+ cargoProfessor + ", loginProfessor=" + loginProfessor + ", senhaProfessor=" + senhaProfessor
-				+ ", dataNascimentoProfessor=" + dataNascimentoProfessor + "]";
+		return "Professor [idProfessor:" + idProfessor + ", Nome Professor: " + nomeProfessor + ", Cargo Professor: "
+				+ cargoProfessor + ", Login: " + loginProfessor + ", Senha: " + senhaProfessor + "]";
 	}
 
 }
