@@ -171,11 +171,18 @@ public class Login extends javax.swing.JFrame {
              this.setVisible(false);
         }else if(comboBoxUsuario.getSelectedItem() == "Professor"){
               GerProfessor gerProfessor = new GerProfessor();
-
-                gerProfessor.matriculaUsuarioProfessor = iprof.logar(login.getText(), senha.getText()).getIdProfessor();
-          
-            this.setVisible(false);
-              
+              gerProfessor.matriculaUsuarioProfessor = iprof.logar(login.getText(), senha.getText()).getIdProfessor();
+              gerProfessor.setVisible(true);
+              this.setVisible(false);
+        }else if(comboBoxUsuario.getSelectedItem() == "Aluno"){
+            
+              GerAluno gerAluno = new GerAluno();
+              gerAluno.loginMatriculaAluno = alun.logar(login.getText(), senha.getText()).getMatricula();
+              gerAluno.setVisible(true);
+              this.setVisible(false);
+        
+        }else{
+        retorno.setText("Login inválido");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
