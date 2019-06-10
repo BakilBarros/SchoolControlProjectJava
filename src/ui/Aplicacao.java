@@ -1,5 +1,6 @@
 package ui;
 
+import ui.*;
 import java.util.Date;
 
 import negocio.Aluno;
@@ -41,7 +42,7 @@ public class Aplicacao {
 				"Import�ncia, contribui��es e fatores relevantes do processo de constru��o do saberes.");
 
 		Professor prof = new Professor(1, "Calos Maia", "Professor", "1", "1", new Date(13, 10, 1996));
-		Professor prof2 = new Professor(2, "Jo�o Marcelo", "Professor", "1234", "Joao2019", new Date(18, 12, 1986));
+		Professor prof2 = new Professor(2, "Jo�o Marcelo", "Professor", "2", "2", new Date(18, 12, 1986));
 
 		Turma Tur = new Turma(1,disc, prof,  20);
 		Turma Tur2 = new Turma(2, 20);
@@ -58,100 +59,17 @@ public class Aplicacao {
 		Double[] n = { 10.0, 10.0, 10.0, 10.0 };
 		RendimentoEscolar renEsc = new RendimentoEscolar(Tur, alu, 8.0, 8.0, t, n);
 		RendimentoEscolar renEsc2 = new RendimentoEscolar(Tur, alu2, 5.0, 5.0, t, n);
+                
+                
 
-            
-                // Teste turma
-                 trm.inserirTurma(Tur);
-                 trm.inserirTurma(Tur2);
-                 trm.inserirTurma(Tur3);
-                 trm.inserirTurma(Tur4);
-                 trm.inserirTurma(Tur5);
-                 trm.inserirTurma(Tur6);
+                 iprof.inserirProfessor(prof);
+                 iprof.inserirProfessor(prof2);
                 
-                // Teste Disciplina
-                // ds.inserirDisciplina(disc);
-                // ds.inserirDisciplina(disc1);
-                // ds.inserirDisciplina(disc2);
-                
-                // System.out.println(ds.buscarDisciplina(1));
-                // System.out.println(ds.listarDisciplina());
-                
-                // Teste Rendimento escolar
-                 rd.atribuir(renEsc);
-                
-                // Teste professor
-               
-                try {
-                iprof.inserirProfessor(prof);
-            } catch (ExceptionElementoExiste ex) {
-                System.out.println(ex.getMessage());
-            }
-            try {
-                iprof.logar("1", "1");
-                   } catch (ExceptionElementoInvalido ex) {
-                System.out.println(ex.getMessage());
-            }
-                
-                
-                
-                // System.out.println(iprof.buscarProfessor(2));
-                // System.out.println(trm.listarTurma());
-                // System.out.println(trm.buscarTurma(1));
-                // System.out.println(trm.listarTurmasProfessor(1));
-                // System.out.println(rd.exibirRendimentoEscolar());
-                // System.out.println(rd.exibirMedias());
-                // System.out.println(rd.calculoPorcentagem());
-                // System.out.println(trm.exibirTurmasDisponiveisProfessor(1));
-                
-                // Teste aluno
-                 alun.inserirAluno(alu);
                  alun.inserirAluno(alu2);
-                
-            try {
-                //  try {
-                // System.out.println(alun.buscarAluno(2));
-                // System.out.println(alun.listarAluno());
-                // System.out.println(alun.logar("2", "2"));
-                // System.out.println(rd.listarTurmasAluno(2));
-                // System.out.println(rd.exibirRendimentoEscolarDoAluno(2));
-                 System.out.println(rd.listarTurmasDisponiveisAluno(2));
-                
-                // Teste Administrador
-                
-                // ds.inserirDisciplina(disc3);
-                // ds.removerDisciplina(1);
-                // System.out.println(ds.buscarDisciplina(4));
-                // System.out.println(ds.listarDisciplina());
-                
-                // trm.inserirTurma(Tur7);
-                // trm.removerTurma(1);
-                // System.out.println(trm.buscarTurma(7));
-                // System.out.println(trm.listarTurma());
-                
-                // rd.atribuir(renEsc2);
-                // iprof.removerProfessor(1);
-                //  System.out.println(iprof.buscarProfessor(1));
-                // } catch (ExceptionElementoInvalido ex) {
-                //     Logger.getLogger(Aplicacao.class.getName()).log(Level.SEVERE, null, ex);
-                //  }
-                //  System.out.println(iprof.listarProfessor());
-                
-                // alun.inserirAluno(alu2);
-                // alun.removerAluno(2);
-                // System.out.println(alun.buscarAluno(2));
-                // System.out.println(alun.listarAluno());
-                trm.alterarTurma(3, disc, prof);
-            } catch (ExceptionElementoInvalido ex) {
-           System.out.println(ex.getMessage());
-            }
+                 alun.inserirAluno(alu);
                  
-            try {
-              System.out.println(trm.buscarTurma(3));
-            } catch (ExceptionElementoInvalido ex) {
-                 System.out.println(ex.getMessage());
-            }
-         
-
-	}
-
+               // System.out.println(iprof.logar("1", "1").getIdProfessor());
+                 System.out.println(alun.logar("2", "2").getMatricula());
+                
+        }
 }

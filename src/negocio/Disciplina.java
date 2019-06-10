@@ -45,5 +45,28 @@ public class Disciplina {
 		return "Disciplina [idDisciplina: " + idDisciplina + ", Nome Disciplina: " + nomeDisciplina + ", Ementa Disciplina :"
 				+ ementaDisciplina + "]\r\n";
 	}
+        
+        
+        	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idDisciplina;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Disciplina other = (Disciplina) obj;
+		if (idDisciplina != other.idDisciplina)
+			return false;
+		return true;
+	}
 
 }

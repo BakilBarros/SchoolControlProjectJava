@@ -20,7 +20,7 @@ public class FechadaProfessor implements IFechadaProfessor {
 
 
 	@Override
-	public Professor logar(String login, String senha) throws ExceptionElementoInvalido{
+	public Professor logar(String login, String senha){
 		// TODO Auto-generated method stub
 		return professorControlador.logar(login, senha);
 	

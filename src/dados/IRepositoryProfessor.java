@@ -8,7 +8,7 @@ import negocio.Professor;
 
 public interface IRepositoryProfessor {
 
-	public Professor logar(String login, String senha) throws ExceptionElementoInvalido;
+	public Professor logar(String login, String senha);
 
 	public void inserirProfessor(Professor professor) throws ExceptionElementoExiste;
 

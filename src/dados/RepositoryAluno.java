@@ -17,13 +17,12 @@ public class RepositoryAluno implements IRepositoryAluno {
 	}
 
 	@Override
-	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido {
+	public Aluno logar(String login, String senha){
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
-			if (aluno.getLoginAluno().equals(login) && aluno.getSenhaAluno().equals(senha)) {
+			if (aluno.getLoginAluno() == login && aluno.getSenhaAluno() == senha) {
 				return aluno;
-			}else{
-                throw new ExceptionElementoInvalido("Login Inválido");        
+			 
                         }
 		}
             return null;

@@ -13,7 +13,7 @@ public class ProfessorControlador {
 		irepositoryProfessor = new RepositoryProfessor();
 	}
 
-	public Professor logar(String login, String senha) throws ExceptionElementoInvalido{
+	public Professor logar(String login, String senha){
 		// TODO Auto-generated method stub
 		return irepositoryProfessor.logar(login, senha);
 

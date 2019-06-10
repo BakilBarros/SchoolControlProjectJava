@@ -16,13 +16,11 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 	}
 
 	@Override
-	public Professor logar(String login, String senha) throws ExceptionElementoInvalido {
+	public Professor logar(String login, String senha){
 		// TODO Auto-generated method stub
 		for (Professor professor : professoresDoBanco) {
 			if (professor.getLoginProfessor().equals(login) && professor.getSenhaProfessor().equals(senha)) {
 				return professor;
-			}else{
-                throw new ExceptionElementoInvalido("Login Inválido");        
                         }
 		}
 		return null;

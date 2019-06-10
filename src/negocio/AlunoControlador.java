@@ -13,7 +13,7 @@ public class AlunoControlador{
 		irepositoryAluno = new RepositoryAluno();
 	}
 
-	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido {
+	public Aluno logar(String login, String senha) {
 		return irepositoryAluno.logar(login, senha);
 	}
 

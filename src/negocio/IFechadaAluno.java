@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IFechadaAluno {
 	
-	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido;
+	public Aluno logar(String login, String senha);
 
 	public void inserirAluno(Aluno aluno) throws ExceptionElementoExiste;
 	

@@ -21,7 +21,7 @@ public class FechadaAluno implements IFechadaAluno {
         }
 
 	@Override
-	public Aluno logar(String login, String senha) throws ExceptionElementoInvalido{
+	public Aluno logar(String login, String senha){
 		// TODO Auto-generated method stub
 		return alunoControlador.logar(login, senha);
 	}
