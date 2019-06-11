@@ -22,5 +22,6 @@ public interface IRepositoryRendimentoEscolar {
 	public List<Turma> listarTurmasAluno(int matricula);
 
 	public List<Turma> listarTurmasDisponiveisAluno(int matricula);
+        
 
 }

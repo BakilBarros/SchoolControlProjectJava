@@ -71,4 +71,5 @@ public class FechadaRendimentoEscolar implements IFechadaRendimentoEscolar {
 		return rendimentoEscolarControlador.listarTurmasDisponiveisAluno(matricula);
 	}
 
+
 }

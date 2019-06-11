@@ -40,11 +40,10 @@ public class RendimentoEscolar {
 		
 	}
         
-        	public RendimentoEscolar(Turma turmaRedimentoEscolar) {
+        	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar) {
 		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
-		
+		this.alunoRedimentoEscolar = alunoRedimentoEscolar;		
 	}
-	
 	
 
 	public Turma getTurmaRedimentoEscolar() {
