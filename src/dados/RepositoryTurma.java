@@ -37,7 +37,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 		if (!verificarExistenciaElemento(turma.getIdTurma())) {
 			turmasDoBanco.add(turma);
 		} else {
-			throw new ExceptionElementoExiste("Turma já cadastrado");
+			throw new ExceptionElementoExiste("Turma já cadastrada");
 		}
 	}
 
@@ -50,7 +50,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 				break;
 			}else{
                         
-                 throw new ExceptionElementoInvalido("Matrícula Inválida!!");       
+                 throw new ExceptionElementoInvalido("Matrícula Inválida");       
                         }
                 }
 
@@ -64,7 +64,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 				return turma;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+		throw new ExceptionElementoInvalido("Matrícula Inválida");
 	}
 
 	@Override
@@ -103,10 +103,8 @@ public class RepositoryTurma implements IRepositoryTurma {
                 t.setDisciplinaTurma(disciplina);
                 t.setProfessorTurma(professor);   
             }else{
-                throw new ExceptionElementoInvalido("Turma Inválida!");    
+                throw new ExceptionElementoInvalido("Turma Inválida");    
             }
         }
-        
-        
     }
 }

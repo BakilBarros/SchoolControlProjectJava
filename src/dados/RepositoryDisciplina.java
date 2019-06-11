@@ -22,7 +22,7 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 		if (!verificarExistenciaElemento(disciplina.getIdDisciplina())) {
 			disciplinaDoBanco.add(disciplina);
 		} else {
-			throw new ExceptionElementoExiste("Disciplina já cadastrado");
+			throw new ExceptionElementoExiste("Disciplina já cadastrada");
 		}
 	}
 
@@ -48,7 +48,7 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 				return disciplina;
 			}
 		}
-		throw new ExceptionElementoInvalido("Identificador Inv�lido");
+		throw new ExceptionElementoInvalido("Identificador Inválido");
 	}
 
 	@Override

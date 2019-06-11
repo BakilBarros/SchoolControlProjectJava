@@ -25,20 +25,12 @@ public class Login extends javax.swing.JFrame {
 	private static IFechadaDisciplina ds = FechadaDisciplina.getInstancia();
 	private static IFechadaRendimentoEscolar rd = FechadaRendimentoEscolar.getInstancia();
 	private static IFechadaProfessor iprof = FechadaProfessor.getInstancia();
-        
-        
     /**
      * Creates new form Login
      */
     public Login() {
-        initComponents();
-        
-        
-      
+        initComponents(); 
     }
-    
- 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
