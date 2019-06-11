@@ -6,6 +6,7 @@
 package ui;
 
 import javax.swing.table.DefaultTableModel;
+import negocio.Aluno;
 import negocio.Disciplina;
 import negocio.ExceptionElementoExiste;
 import negocio.ExceptionElementoInvalido;
@@ -19,6 +20,8 @@ import negocio.IFechadaDisciplina;
 import negocio.IFechadaProfessor;
 import negocio.IFechadaRendimentoEscolar;
 import negocio.IFechadaTurma;
+import negocio.Professor;
+import negocio.RendimentoEscolar;
 import negocio.Turma;
 
 /**
@@ -44,7 +47,11 @@ public class GerAdministrador extends javax.swing.JFrame {
         }
          DefaultTableModel tab2 = (DefaultTableModel) tabelaTurma.getModel();  
          for (Turma t : trm.listarTurma()) {
-         tab2.addRow(new Object[]{t.getIdTurma(), t.getProfessorTurma().getNomeProfessor(), t.getDisciplinaTurma().getNomeDisciplina(), t.getCapacidadeTurma()});
+             if (t.getProfessorTurma() != null && t.getDisciplinaTurma() != null) {
+              tab2.addRow(new Object[]{t.getIdTurma(),t.getProfessorTurma().getNomeProfessor(),t.getDisciplinaTurma().getNomeDisciplina(), t.getCapacidadeTurma()}); 
+             }else{
+                  tab2.addRow(new Object[]{t.getIdTurma(),null, null, t.getCapacidadeTurma()});        
+             }
          }
     }
 
@@ -83,9 +90,15 @@ public class GerAdministrador extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         capacidade = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaListaAluno = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaListarProfessor = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 700));
 
         jLabel1.setText("Identificador:");
 
@@ -222,7 +235,7 @@ public class GerAdministrador extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Identificador Turma:", "Disciplina:", "Professor:", "Capacidade:"
+                "Identificador Turma:", "Profesor:", "Disciplina", "Capacidade:"
             }
         ));
         jScrollPane2.setViewportView(tabelaTurma);
@@ -273,6 +286,56 @@ public class GerAdministrador extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
+        tabelaListaAluno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Matrícula Aluno:", "Nome:", "Período", "Login:", "Senha:"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabelaListaAluno);
+
+        tabelaListarProfessor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Matrícula Professor", "Nome:", "Cargo:", "Login:", "Senha:"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tabelaListarProfessor);
+
+        jButton5.setText("Atualizar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Atualizar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -284,7 +347,14 @@ public class GerAdministrador extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -296,7 +366,15 @@ public class GerAdministrador extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -311,10 +389,10 @@ public class GerAdministrador extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-           int entradaMatricula = Integer.parseInt(matricula.getText());
+        int entradaMatricula = Integer.parseInt(matricula.getText());
         if (comboBoxAdministrador.getSelectedItem().equals("Disciplina")) {            
             try {    
-                 retorno.setText(ds.buscarDisciplina(entradaMatricula).toString());
+                retorno.setText(ds.buscarDisciplina(entradaMatricula).toString());
             } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
             }
@@ -326,17 +404,16 @@ public class GerAdministrador extends javax.swing.JFrame {
             }
         }else if (comboBoxAdministrador.getSelectedItem().equals("Professor")) {                
             try {
-              retorno.setText(iprof.buscarProfessor(entradaMatricula).toString());
+               retorno.setText(iprof.buscarProfessor(entradaMatricula).toString());
             } catch (ExceptionElementoInvalido ex) {
-                retorno.setText(ex.getMessage());
+               retorno.setText(ex.getMessage());
             }       
         }else if (comboBoxAdministrador.getSelectedItem().equals("Aluno")) {                        
             try {
                retorno.setText(alun.buscarAluno(entradaMatricula).toString());
             } catch (ExceptionElementoInvalido ex) {
-                retorno.setText(ex.getMessage());
-            }
-          
+               retorno.setText(ex.getMessage());
+            }          
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -358,16 +435,16 @@ public class GerAdministrador extends javax.swing.JFrame {
                  this.dispose();
                  new GerAdministrador().setVisible(true);
                  retorno.setText("Turma removida");
-                } catch (ExceptionElementoInvalido ex) {
+            } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
-                }            
+            }            
         }else if (comboBoxAdministrador.getSelectedItem() == "Professor") {                
             try {
                 iprof.removerProfessor(entradaMatricula);
                 retorno.setText("Professor removido");
-                } catch (ExceptionElementoInvalido ex) {
+            } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
-                }           
+            }           
         }else if (comboBoxAdministrador.getSelectedItem() == "Aluno") {                       
             try {
                alun.removerAluno(entradaMatricula);
@@ -407,6 +484,22 @@ public class GerAdministrador extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tabListarProfessor = (DefaultTableModel) tabelaListarProfessor.getModel();  
+        iprof.listarProfessor().stream().forEach((professor) -> {
+            tabListarProfessor.addRow(new Object[]{professor.getIdProfessor(), professor.getNomeProfessor(), professor.getCargoProfessor(), professor.getLoginProfessor(), professor.getSenhaProfessor()});
+        });
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tabListarAluno = (DefaultTableModel) tabelaListaAluno.getModel();  
+        for (Aluno aluno : alun.listarAluno()) {
+       tabListarAluno.addRow(new Object[]{aluno.getMatricula(), aluno.getNomeAluno(), aluno.getPeriodoAluno(), aluno.getLoginAluno(), aluno.getSenhaAluno()});
+    }//GEN-LAST:event_jButton5ActionPerformed
+}
     /**
      * @param args the command line arguments
      */
@@ -452,7 +545,9 @@ public class GerAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -464,10 +559,14 @@ public class GerAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField matricula;
     private javax.swing.JTextField nomeDisciplina;
     private javax.swing.JLabel retorno;
     private javax.swing.JTable tabelaDisciplina;
+    private javax.swing.JTable tabelaListaAluno;
+    private javax.swing.JTable tabelaListarProfessor;
     private javax.swing.JTable tabelaTurma;
     // End of variables declaration//GEN-END:variables
 }

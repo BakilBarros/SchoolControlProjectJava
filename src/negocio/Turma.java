@@ -91,5 +91,9 @@ public class Turma {
 		return true;
 	}
 
+    public Object getTurmaRedimentoEscolar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

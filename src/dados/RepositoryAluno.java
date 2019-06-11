@@ -20,9 +20,8 @@ public class RepositoryAluno implements IRepositoryAluno {
 	public Aluno logar(String login, String senha){
 		// TODO Auto-generated method stub
 		for (Aluno aluno : alunosDoBanco) {
-			if (aluno.getLoginAluno() == login && aluno.getSenhaAluno() == senha) {
-				return aluno;
-			 
+			if (aluno.getLoginAluno().equals(login) && aluno.getSenhaAluno().equals(senha)){
+				return aluno;			 
                         }
 		}
             return null;

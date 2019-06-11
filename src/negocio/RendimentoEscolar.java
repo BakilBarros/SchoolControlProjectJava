@@ -39,6 +39,11 @@ public class RendimentoEscolar {
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
 		
 	}
+        
+        	public RendimentoEscolar(Turma turmaRedimentoEscolar) {
+		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
+		
+	}
 	
 	
 

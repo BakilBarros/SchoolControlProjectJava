@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package ui;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import negocio.ExceptionElementoInvalido;
 import negocio.FechadaAluno;
 import negocio.FechadaDisciplina;
 import negocio.FechadaProfessor;
@@ -36,6 +32,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        
       
     }
     
@@ -169,18 +167,16 @@ public class Login extends javax.swing.JFrame {
              GerAdministrador cd = new GerAdministrador();
              cd.setVisible(true);
              this.setVisible(false);
-        }else if(comboBoxUsuario.getSelectedItem() == "Professor"){
-              GerProfessor gerProfessor = new GerProfessor();
-              gerProfessor.matriculaUsuarioProfessor = iprof.logar(login.getText(), senha.getText()).getIdProfessor();
-              gerProfessor.setVisible(true);
+        }else if(comboBoxUsuario.getSelectedItem() == "Professor" && iprof.logar(login.getText(), senha.getText()) != null){
+              GerenciadorProfessor gerenciadorProfessor = new GerenciadorProfessor();
+              gerenciadorProfessor.matriculaUsuarioProfessor = iprof.logar(login.getText(), senha.getText()).getIdProfessor();
+              gerenciadorProfessor.setVisible(true);
               this.setVisible(false);
-        }else if(comboBoxUsuario.getSelectedItem() == "Aluno"){
-            
-              GerAluno gerAluno = new GerAluno();
-              gerAluno.loginMatriculaAluno = alun.logar(login.getText(), senha.getText()).getMatricula();
-              gerAluno.setVisible(true);
-              this.setVisible(false);
-        
+        }else if(comboBoxUsuario.getSelectedItem() == "Aluno" && alun.logar(login.getText(), senha.getText()) != null){           
+              GerenciadorAluno gerenciadorAlunoAluno = new GerenciadorAluno();
+              gerenciadorAlunoAluno.loginMatriculaAluno = alun.logar(login.getText(), senha.getText()).getMatricula();
+              gerenciadorAlunoAluno.setVisible(true);
+              this.setVisible(false);        
         }else{
         retorno.setText("Login inválido");
         }

@@ -60,16 +60,10 @@ public class Aplicacao {
 		RendimentoEscolar renEsc = new RendimentoEscolar(Tur, alu, 8.0, 8.0, t, n);
 		RendimentoEscolar renEsc2 = new RendimentoEscolar(Tur, alu2, 5.0, 5.0, t, n);
                 
-                
-
-                 iprof.inserirProfessor(prof);
-                 iprof.inserirProfessor(prof2);
-                
-                 alun.inserirAluno(alu2);
-                 alun.inserirAluno(alu);
-                 
-               // System.out.println(iprof.logar("1", "1").getIdProfessor());
-                 System.out.println(alun.logar("2", "2").getMatricula());
+            rd.atribuir(renEsc2);
+            rd.atribuir(renEsc);
+            System.out.println(rd.calculoPorcentagem());
+           System.out.println(rd.exibirMedias());
                 
         }
 }

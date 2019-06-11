@@ -282,28 +282,27 @@ public class GerCadAluno extends javax.swing.JFrame {
         if (comboBoxAdministrador.getSelectedItem().equals("Disciplina")) {
             try {
                 retorno.setText(ds.buscarDisciplina(entradaMatricula).toString());
-            } catch (ExceptionElementoInvalido ex) {
+                } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
-            }
+                }
         }else if (comboBoxAdministrador.getSelectedItem().equals("Turma")) {
-            try {
+                try {
                 retorno.setText(trm.buscarTurma(entradaMatricula).toString());
-            } catch (ExceptionElementoInvalido ex) {
+                } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
-            }
+                }
         }else if (comboBoxAdministrador.getSelectedItem().equals("Professor")) {
-            try {
+                try {
                 retorno.setText(iprof.buscarProfessor(entradaMatricula).toString());
-            } catch (ExceptionElementoInvalido ex) {
+                } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
-            }
+                }
         }else if (comboBoxAdministrador.getSelectedItem().equals("Aluno")) {
-            try {
+                try {
                 retorno.setText(alun.buscarAluno(entradaMatricula).toString());
-            } catch (ExceptionElementoInvalido ex) {
+                } catch (ExceptionElementoInvalido ex) {
                 retorno.setText(ex.getMessage());
-            }
-
+                }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
