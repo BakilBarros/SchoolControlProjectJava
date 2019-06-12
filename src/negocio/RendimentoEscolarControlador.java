@@ -66,6 +66,16 @@ public class RendimentoEscolarControlador implements IRepositoryRendimentoEscola
 		// TODO Auto-generated method stub
 		return irendimentoEscolar.listarTurmasDisponiveisAluno(matricula);
 	}
+
+        @Override
+        public void alterarRendimentoEscolarAluno(int idRendimento, String[] trabalhosRendimentoEscolar) {
+     irendimentoEscolar.alterarRendimentoEscolarAluno(idRendimento, trabalhosRendimentoEscolar);
+    }
+
+    @Override
+    public void alterarRendimentoEscolarProfessor(int idRendimento, Double nota1, Double nota2, Double[] notasDostrabalhosRendimentoEscolar) {
+        irendimentoEscolar.alterarRendimentoEscolarProfessor(idRendimento, nota1, nota2, notasDostrabalhosRendimentoEscolar);
+    }
 	
 	
 }

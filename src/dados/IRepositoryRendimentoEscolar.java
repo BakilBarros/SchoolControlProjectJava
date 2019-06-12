@@ -23,5 +23,9 @@ public interface IRepositoryRendimentoEscolar {
 
 	public List<Turma> listarTurmasDisponiveisAluno(int matricula);
         
+        public void alterarRendimentoEscolarAluno(int idRendimento, String[] trabalhosRendimentoEscolar);
+        
+        public void alterarRendimentoEscolarProfessor(int idRendimento, Double nota1, Double nota2, Double[] notasDostrabalhosRendimentoEscolar);
+        
 
 }

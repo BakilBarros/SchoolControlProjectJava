@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class RendimentoEscolar {
 
+        private int idRendimentoEscolar;
 	private Turma turmaRedimentoEscolar;
 	private Aluno alunoRedimentoEscolar;
 	private Double nota1RedimentoEscolar;
@@ -15,35 +16,30 @@ public class RendimentoEscolar {
 	public RendimentoEscolar() {
 		
 	}
-
-	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar, Double nota1RedimentoEscolar,
-			Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
+        
+        
+        public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
+			Double nota1RedimentoEscolar, Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
 			Double[] notasDostrabalhosRendimentoEscolar, Double mediaAluno) {
+		this.idRendimentoEscolar = idRendimentoEscolar;
 		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
 		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
 		this.nota1RedimentoEscolar = nota1RedimentoEscolar;
 		this.nota2RedimentoEscolar = nota2RedimentoEscolar;
 		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
-		this.mediaAluno = 0.0;
-	}
-	
-	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar, Double nota1RedimentoEscolar,
-			Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
-			Double[] notasDostrabalhosRendimentoEscolar) {
-		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
-		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
-		this.nota1RedimentoEscolar = nota1RedimentoEscolar;
-		this.nota2RedimentoEscolar = nota2RedimentoEscolar;
-		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
-		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
-		
+		this.mediaAluno = mediaAluno;
 	}
         
-        	public RendimentoEscolar(Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar) {
+	
+        public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
+			String[] trabalhosRendimentoEscolar) {
+		this.idRendimentoEscolar = idRendimentoEscolar;
 		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
-		this.alunoRedimentoEscolar = alunoRedimentoEscolar;		
+		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
+		this.trabalhosRendimentoEscolar = null;
 	}
+
 	
 
 	public Turma getTurmaRedimentoEscolar() {
@@ -116,6 +112,20 @@ public class RendimentoEscolar {
 				+ Arrays.toString(trabalhosRendimentoEscolar) + ", notasDostrabalhosRendimentoEscolar:"
 				+ Arrays.toString(notasDostrabalhosRendimentoEscolar) + ", mediaAluno: " + mediaAluno + "]\r\n";
 	}
+
+    /**
+     * @return the idRendimentoEscolar
+     */
+    public int getIdRendimentoEscolar() {
+        return idRendimentoEscolar;
+    }
+
+    /**
+     * @param idRendimentoEscolar the idRendimentoEscolar to set
+     */
+    public void setIdRendimentoEscolar(int idRendimentoEscolar) {
+        this.idRendimentoEscolar = idRendimentoEscolar;
+    }
 	
 	
 	

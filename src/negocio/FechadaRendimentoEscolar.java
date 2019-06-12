@@ -71,5 +71,15 @@ public class FechadaRendimentoEscolar implements IFechadaRendimentoEscolar {
 		return rendimentoEscolarControlador.listarTurmasDisponiveisAluno(matricula);
 	}
 
+    @Override
+    public void alterarRendimentoEscolarAluno(int idRendimento, String[] trabalhosRendimentoEscolar) {
+      rendimentoEscolarControlador.alterarRendimentoEscolarAluno(idRendimento, trabalhosRendimentoEscolar);
+    }
+
+    @Override
+    public void alterarRendimentoEscolarProfessor(int idRendimento, Double nota1, Double nota2, Double[] notasDostrabalhosRendimentoEscolar) {
+        rendimentoEscolarControlador.alterarRendimentoEscolarProfessor(idRendimento, nota1, nota2, notasDostrabalhosRendimentoEscolar);
+    }
+
 
 }

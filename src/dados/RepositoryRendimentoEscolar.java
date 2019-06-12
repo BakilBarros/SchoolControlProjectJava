@@ -103,4 +103,25 @@ public class RepositoryRendimentoEscolar implements IRepositoryRendimentoEscolar
 		return armazenaVetor;
 	}
 
-}
+    @Override
+    public void alterarRendimentoEscolarAluno(int idRendimento, String[] trabalhosRendimentoEscolar) {
+            for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
+                if (rendimentoEscolar.getIdRendimentoEscolar() == idRendimento) {
+                    rendimentoEscolar.setTrabalhosRendimentoEscolar(trabalhosRendimentoEscolar);
+                }
+            }
+        }
+
+    @Override
+    public void alterarRendimentoEscolarProfessor(int idRendimento, Double nota1, Double nota2, Double[] notasDostrabalhosRendimentoEscolar) {
+          for (RendimentoEscolar rendimentoEscolar : rendimentoEscolarDoBanco) {
+                if (rendimentoEscolar.getIdRendimentoEscolar() == idRendimento) {
+                   rendimentoEscolar.setNota1RedimentoEscolar(nota1);
+                   rendimentoEscolar.setNota2RedimentoEscolar(nota2);
+                   rendimentoEscolar.setNotasDostrabalhosRendimentoEscolar(notasDostrabalhosRendimentoEscolar);
+                }
+            }    
+    }
+   }
+
+

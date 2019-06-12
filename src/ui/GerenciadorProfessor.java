@@ -55,7 +55,7 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         matricula = new javax.swing.JTextField();
-        comboBoxAdministrador = new javax.swing.JComboBox<>();
+        comboBoxAdministrador = new javax.swing.JComboBox<String>();
         btnPesquisar = new javax.swing.JButton();
         btnPesquisar1 = new javax.swing.JButton();
         retorno = new javax.swing.JLabel();
@@ -87,14 +87,15 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
         notaDoTrabalho6 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        Visualizar = new javax.swing.JToggleButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(950, 650));
 
         jLabel1.setText("Identificador:");
 
-        comboBoxAdministrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aluno", "Disciplina", "Turma", "Professor" }));
+        comboBoxAdministrador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aluno", "Disciplina", "Turma", "Professor" }));
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.setMaximumSize(new java.awt.Dimension(77, 23));
@@ -229,7 +230,7 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
 
         jLabel11.setText("N. Trabalhos:");
 
-        jButton5.setText("Visualizar %");
+        jButton5.setText("%");
         jButton5.setMaximumSize(new java.awt.Dimension(77, 23));
         jButton5.setMinimumSize(new java.awt.Dimension(77, 23));
         jButton5.setPreferredSize(new java.awt.Dimension(77, 23));
@@ -246,10 +247,12 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
             }
         });
 
-        Visualizar.setText("visualizar");
-        Visualizar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setText("Turmas Disponíveis:");
+
+        jButton7.setText("visualizar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VisualizarActionPerformed(evt);
+                jButton7ActionPerformed(evt);
             }
         });
 
@@ -288,28 +291,31 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addComponent(jScrollPane4)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Visualizar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)))
+                        .addComponent(jButton6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -340,13 +346,15 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
                         .addComponent(jLabel9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Visualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(idDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)
@@ -355,7 +363,7 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
                         .addComponent(idTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(9, 9, 9)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(258, 258, 258))
+                .addGap(228, 228, 228))
         );
 
         pack();
@@ -423,6 +431,8 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
         }   
         try {
         trm.alterarTurma(entradaTurma, dis, pro);
+        this.dispose();
+        new GerenciadorProfessor().setVisible(true);
         retorno.setText("Turma Cadastrada");
         } catch (Exception e) {
         retorno.setText(e.getMessage());
@@ -444,21 +454,21 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
         DefaultTableModel tabTurma = (DefaultTableModel) tabelaTurmas.getModel();  
+        tabelaTurmas.removeAll();
         for (Turma turma : trm.listarTurmasProfessor(matriculaUsuarioProfessor)) {
         tabTurma.addRow(new Object[]{turma.getIdTurma(), turma.getDisciplinaTurma().getNomeDisciplina(), turma.getProfessorTurma().getNomeProfessor(), turma.getCapacidadeTurma()});
-        tabTurma.removeRow(turma.getIdTurma());
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void VisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarActionPerformed
-        // TODO add your handling code here:      
-        DefaultTableModel tab2 = (DefaultTableModel) tabelaTurmaDisponivel.getModel();  
-        tabelaTurmaDisponivel.removeAll();
-        for (Turma t2 : trm.exibirTurmasDisponiveisProfessor(matriculaUsuarioProfessor)) {  
-        tab2.addRow(new Object[]{t2.getIdTurma(), null, null,  t2.getCapacidadeTurma()});              
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tabTurma = (DefaultTableModel) tabelaTurmaDisponivel.getModel();  
+        for (Turma turma : trm.exibirTurmasDisponiveisProfessor(matriculaUsuarioProfessor)) {
+        tabTurma.addRow(new Object[]{turma.getIdTurma(), null, null, turma.getCapacidadeTurma()});
+        
         }
         
-    }//GEN-LAST:event_VisualizarActionPerformed
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -496,7 +506,6 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton Visualizar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnPesquisar1;
     private javax.swing.JComboBox<String> comboBoxAdministrador;
@@ -508,10 +517,12 @@ public class GerenciadorProfessor extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

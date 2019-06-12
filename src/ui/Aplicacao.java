@@ -6,7 +6,6 @@ import java.util.Date;
 import negocio.Aluno;
 import negocio.Disciplina;
 import negocio.ExceptionElementoExiste;
-import negocio.ExceptionElementoInvalido;
 import negocio.FechadaAluno;
 import negocio.FechadaDisciplina;
 import negocio.FechadaProfessor;
@@ -57,13 +56,16 @@ public class Aplicacao {
 
 		String[] t = { "1", "2", "3", "4" };
 		Double[] n = { 10.0, 10.0, 10.0, 10.0 };
-		RendimentoEscolar renEsc = new RendimentoEscolar(Tur, alu, 8.0, 8.0, t, n);
-		RendimentoEscolar renEsc2 = new RendimentoEscolar(Tur, alu2, 5.0, 5.0, t, n);
+		RendimentoEscolar renEsc = new RendimentoEscolar(1, Tur, alu, 8.0, 8.0, t, n, 0.0);
+		RendimentoEscolar renEsc2 = new RendimentoEscolar(2, Tur, alu2, 5.0, 5.0, t, n, 0.0);
                 
-            rd.atribuir(renEsc2);
-            rd.atribuir(renEsc);
-            System.out.println(rd.calculoPorcentagem());
-           System.out.println(rd.exibirMedias());
+           // rd.atribuir(renEsc2);
+           // rd.atribuir(renEsc);
+            alun.inserirAluno(alu2);
+            
+            //System.out.println(rd.calculoPorcentagem());
+          // System.out.println(rd.exibirMedias());
+            System.out.println(rd.listarTurmasDisponiveisAluno(2));
                 
         }
 }

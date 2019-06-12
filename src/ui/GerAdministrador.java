@@ -67,7 +67,7 @@ public class GerAdministrador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         matricula = new javax.swing.JTextField();
-        comboBoxAdministrador = new javax.swing.JComboBox<>();
+        comboBoxAdministrador = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         retorno = new javax.swing.JLabel();
@@ -103,7 +103,7 @@ public class GerAdministrador extends javax.swing.JFrame {
 
         jLabel1.setText("Identificador:");
 
-        comboBoxAdministrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aluno", "Disciplina", "Turma", "Professor" }));
+        comboBoxAdministrador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aluno", "Disciplina", "Turma", "Professor" }));
 
         jButton1.setText("Remover");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
