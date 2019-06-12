@@ -1,6 +1,7 @@
 package dados;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import negocio.Disciplina;
@@ -28,17 +29,22 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 
 	@Override
 	public void removerDisciplina(int idDisciplina) throws ExceptionElementoInvalido{
-		// TODO Auto-generated method stub
-		for (Disciplina disciplina : disciplinaDoBanco) {
-			if (disciplina.getIdDisciplina() == idDisciplina) {
-				disciplinaDoBanco.remove(disciplina);
-				break;
-			}else{
-                throw new ExceptionElementoInvalido("Identificador Inválido");        
-                        }
-		}
-		
-	}
+	
+            List<Disciplina> toRemove = new ArrayList<Disciplina>();
+
+            for (Disciplina disciplina : disciplinaDoBanco) {
+                if (disciplina.getIdDisciplina() == idDisciplina) {
+                    System.out.println(toRemove.add(disciplina));
+                    
+                }else{
+             throw new ExceptionElementoInvalido("Identificador Inválido");   
+                }
+            }
+            disciplinaDoBanco.removeAll(toRemove);          
+             
+        }
+                  
+                     
 
 	@Override
 	public Disciplina buscarDisciplina(int idDisciplina) throws ExceptionElementoInvalido{
