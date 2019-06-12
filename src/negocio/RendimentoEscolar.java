@@ -28,16 +28,17 @@ public class RendimentoEscolar {
 		this.nota2RedimentoEscolar = nota2RedimentoEscolar;
 		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
 		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
-		this.mediaAluno = mediaAluno;
+		this.mediaAluno = 0.0;
 	}
         
 	
-        public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
-			String[] trabalhosRendimentoEscolar) {
+      public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
+			String[] trabalhosRendimentoEscolar,Double mediaAluno) {
 		this.idRendimentoEscolar = idRendimentoEscolar;
 		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
-		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
-		this.trabalhosRendimentoEscolar = null;
+		this.alunoRedimentoEscolar = alunoRedimentoEscolar;		
+		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;		
+		this.mediaAluno = 0.0;
 	}
 
 	

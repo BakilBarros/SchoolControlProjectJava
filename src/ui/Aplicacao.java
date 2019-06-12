@@ -59,13 +59,14 @@ public class Aplicacao {
 		RendimentoEscolar renEsc = new RendimentoEscolar(1, Tur, alu, 8.0, 8.0, t, n, 0.0);
 		RendimentoEscolar renEsc2 = new RendimentoEscolar(2, Tur, alu2, 5.0, 5.0, t, n, 0.0);
                 
-           // rd.atribuir(renEsc2);
-           // rd.atribuir(renEsc);
+            rd.atribuir(renEsc2);
+            rd.atribuir(renEsc);
             alun.inserirAluno(alu2);
             
             //System.out.println(rd.calculoPorcentagem());
           // System.out.println(rd.exibirMedias());
             System.out.println(rd.listarTurmasDisponiveisAluno(2));
+            System.out.println(rd.calculoPorcentagem());
                 
         }
 }
