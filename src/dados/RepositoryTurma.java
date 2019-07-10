@@ -50,7 +50,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 				break;
 			}else{
                         
-                 throw new ExceptionElementoInvalido("Matrícula Inválida");       
+                 throw new ExceptionElementoInvalido("ops! Algo Saio Errado");       
                         }
                 }
 
@@ -64,7 +64,7 @@ public class RepositoryTurma implements IRepositoryTurma {
 				return turma;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matrícula Inválida");
+		throw new ExceptionElementoInvalido("ops! Algo Saio Errado");
 	}
 
 	@Override
@@ -103,7 +103,7 @@ public class RepositoryTurma implements IRepositoryTurma {
                 t.setDisciplinaTurma(disciplina);
                 t.setProfessorTurma(professor);   
             }else{
-                throw new ExceptionElementoInvalido("Turma Inválida");    
+                throw new ExceptionElementoInvalido("ops! Algo Saio Errado");    
             }
         }
     }

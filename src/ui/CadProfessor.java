@@ -36,6 +36,11 @@ public class CadProfessor extends javax.swing.JFrame {
      */
     public CadProfessor() {
         initComponents();
+        initComplementos();
+    }
+    
+     public void initComplementos(){
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -118,7 +123,7 @@ public class CadProfessor extends javax.swing.JFrame {
 
         jLabel6.setText("Cargo:");
 
-        retorno.setText("--");
+        retorno.setText("-");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -139,9 +144,6 @@ public class CadProfessor extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel9))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(retorno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(61, 61, 61))
                             .addComponent(cadCargoProfessor)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(cadLoginProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +175,8 @@ public class CadProfessor extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))
+                                .addComponent(jButton2))
+                            .addComponent(retorno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -266,7 +269,7 @@ public class CadProfessor extends javax.swing.JFrame {
         Professor prof = new Professor(v1, cadNomeProfessor.getText(), cadCargoProfessor.getText(), cadLoginProfessor.getText(), cadSenhaProfessor.getText(), new Date(v2, v3, v4));
         try {
                 iprof.inserirProfessor(prof);
-                retorno.setText("Professor cadastrado!!");
+                retorno.setText("Professor Cadastrado com sucesso!");
             } catch (ExceptionElementoExiste e) {
                retorno.setText(e.getMessage());
             }

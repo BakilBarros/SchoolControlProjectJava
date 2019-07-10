@@ -46,7 +46,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 				return aluno;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matr�cula Inv�lida!!");
+		throw new ExceptionElementoInvalido("ops! Algo Saio Errado");
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 				break;
 			}else{
                             
-                        throw new ExceptionElementoInvalido("Matrícula Inválida!!");
+                        throw new ExceptionElementoInvalido("ops! Algo Saio Errado");
                         
                         }
 		}
@@ -73,7 +73,7 @@ public class RepositoryAluno implements IRepositoryAluno {
 				return aluno;
 			}
 		}
-		throw new ExceptionElementoInvalido("Matr�cula Inv�lida!!");
+		throw new ExceptionElementoInvalido("ops! Algo Saio Errado");
 
 	}
 

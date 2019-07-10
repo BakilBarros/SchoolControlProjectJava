@@ -45,7 +45,7 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 				break;
 			}else{
                             
-                throw new ExceptionElementoInvalido("Pesquisa Inválida"); 
+                throw new ExceptionElementoInvalido("ops! Algo Saio Errado"); 
                 
                         }
                         
@@ -61,7 +61,7 @@ public class RepositoryProfessor implements IRepositoryProfessor {
 				return professor;
 			}
 		}
-		throw new ExceptionElementoInvalido("Pesquisa Inválida");
+		throw new ExceptionElementoInvalido("ops! Algo Saio Errado");
 	}
 
 	@Override

@@ -13,36 +13,42 @@ public class RendimentoEscolar {
 	private Double[] notasDostrabalhosRendimentoEscolar = new Double[3];
 	private Double mediaAluno;
 	
-	public RendimentoEscolar() {
-		
-	}
-        
-        
-        public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
-			Double nota1RedimentoEscolar, Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
-			Double[] notasDostrabalhosRendimentoEscolar, Double mediaAluno) {
-		this.idRendimentoEscolar = idRendimentoEscolar;
-		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
-		this.alunoRedimentoEscolar = alunoRedimentoEscolar;
-		this.nota1RedimentoEscolar = nota1RedimentoEscolar;
-		this.nota2RedimentoEscolar = nota2RedimentoEscolar;
-		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
-		this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
-		this.mediaAluno = 0.0;
-	}
-        
-	
-      public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
-			String[] trabalhosRendimentoEscolar,Double mediaAluno) {
-		this.idRendimentoEscolar = idRendimentoEscolar;
-		this.turmaRedimentoEscolar = turmaRedimentoEscolar;
-		this.alunoRedimentoEscolar = alunoRedimentoEscolar;		
-		this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;		
-		this.mediaAluno = 0.0;
-	}
+                public RendimentoEscolar() {
+			
+                }
 
-	
+		public RendimentoEscolar(int idRendimentoEscolar, Turma turmaRedimentoEscolar, Aluno alunoRedimentoEscolar,
+				Double nota1RedimentoEscolar, Double nota2RedimentoEscolar, String[] trabalhosRendimentoEscolar,
+				Double[] notasDostrabalhosRendimentoEscolar, Double mediaAluno) {
+			this.idRendimentoEscolar = idRendimentoEscolar;
+			this.turmaRedimentoEscolar = turmaRedimentoEscolar;
+			this.alunoRedimentoEscolar = alunoRedimentoEscolar;
+			this.nota1RedimentoEscolar = nota1RedimentoEscolar;
+			this.nota2RedimentoEscolar = nota2RedimentoEscolar;
+			this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
+			this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
+			this.mediaAluno = mediaAluno;
+		}
 
+               public RendimentoEscolar(int idRendimentoEscolar, Aluno alunoRedimentoEscolar, Turma turmaRedimentoEscolar) {		
+			this.idRendimentoEscolar = idRendimentoEscolar;
+                        this.alunoRedimentoEscolar = alunoRedimentoEscolar;
+                        this.turmaRedimentoEscolar = turmaRedimentoEscolar;
+                }
+        
+       		public RendimentoEscolar(int idRendimentoEscolar, String[] trabalhosRendimentoEscolar) {
+			this.idRendimentoEscolar = idRendimentoEscolar;
+			this.trabalhosRendimentoEscolar = trabalhosRendimentoEscolar;
+		}
+
+                public RendimentoEscolar(int idRendimentoEscolar, Double nota1RedimentoEscolar, Double nota2RedimentoEscolar,
+				Double[] notasDostrabalhosRendimentoEscolar) {
+			this.idRendimentoEscolar = idRendimentoEscolar;
+			this.nota1RedimentoEscolar = nota1RedimentoEscolar;
+			this.nota2RedimentoEscolar = nota2RedimentoEscolar;
+			this.notasDostrabalhosRendimentoEscolar = notasDostrabalhosRendimentoEscolar;
+		}
+        
 	public Turma getTurmaRedimentoEscolar() {
 		return turmaRedimentoEscolar;
 	}

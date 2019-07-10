@@ -35,6 +35,11 @@ public class CadAluno extends javax.swing.JFrame {
      */
     public CadAluno() {
         initComponents();
+        initComplementos();
+    }
+    
+     public void initComplementos(){
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -125,7 +130,7 @@ public class CadAluno extends javax.swing.JFrame {
 
         jLabel9.setText("Matrícula:");
 
-        retorno.setText("--");
+        retorno.setText("-");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,12 +177,12 @@ public class CadAluno extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel9))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))
+                                    .addComponent(jLabel9)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -277,7 +282,7 @@ public class CadAluno extends javax.swing.JFrame {
         Aluno alu = new Aluno(v1, cadNomeAluno.getText(), new Date(v2, v3, v4), v5, cadLoginAluno.getText(), cadSenhaAluno.getText());
         try {
                 alun.inserirAluno(alu);               
-                retorno.setText("Usuário Cadastrado!");
+                retorno.setText("Aluno cadastrado com sucesso!");
         } catch (Exception e) {
                retorno.setText(e.getMessage());
          }   

@@ -1,7 +1,6 @@
 package dados;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import negocio.Disciplina;
@@ -37,7 +36,7 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
                     System.out.println(toRemove.add(disciplina));
                     
                 }else{
-             throw new ExceptionElementoInvalido("Identificador Inválido");   
+             throw new ExceptionElementoInvalido("ops! Algo Saio Errado");   
                 }
             }
             disciplinaDoBanco.removeAll(toRemove);          
@@ -54,7 +53,7 @@ public class RepositoryDisciplina implements IRepositoryDisciplina {
 				return disciplina;
 			}
 		}
-		throw new ExceptionElementoInvalido("Identificador Inválido");
+		throw new ExceptionElementoInvalido("ops! Algo Saio Errado");
 	}
 
 	@Override

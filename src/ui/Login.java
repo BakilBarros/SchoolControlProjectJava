@@ -30,6 +30,11 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents(); 
+        initComplementos();
+    }
+    
+    public void initComplementos(){
+        this.setLocationRelativeTo(null);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,7 +91,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Usuário:");
 
-        retorno.setText("--");
+        retorno.setText("-");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,16 +181,16 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        CadProfessor cadProfessor = new CadProfessor();
-        cadProfessor.setVisible(true);
-        this.setVisible(false);
+            CadProfessor cadProfessor = new CadProfessor();
+            cadProfessor.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        CadAluno cadAluno = new CadAluno();
-        cadAluno.setVisible(true);
-        this.setVisible(false);
+            CadAluno cadAluno = new CadAluno();
+            cadAluno.setVisible(true);
+            this.setVisible(false);
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
